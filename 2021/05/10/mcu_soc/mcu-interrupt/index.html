@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/assets/facicon/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/assets/facicon/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="MCU架构——中断       &amp;#8195;&amp;#8195;何为中断，就是指处理器接收到来自硬件或者软件的信号，提示发生了某个事件，应该被注意并作出处理。 &amp;#8195;&amp;#8195;通常，在接收到来自外围硬件（相对于中央处理器和内存）的异步信号，或来自软件的同步信号之后，处理器将会进行相应的硬件／软件处理。发出这样的信号称为进行中断请求（interrupt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mcu_interrupt">
+<meta property="og:url" content="https://liangjinlongfx.github.io/2021/05/10/mcu_soc/mcu-interrupt/index.html">
+<meta property="og:site_name" content="Jinlong&#39;s Blog">
+<meta property="og:description" content="MCU架构——中断       &amp;#8195;&amp;#8195;何为中断，就是指处理器接收到来自硬件或者软件的信号，提示发生了某个事件，应该被注意并作出处理。 &amp;#8195;&amp;#8195;通常，在接收到来自外围硬件（相对于中央处理器和内存）的异步信号，或来自软件的同步信号之后，处理器将会进行相应的硬件／软件处理。发出这样的信号称为进行中断请求（interrupt">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-10T14:04:54.000Z">
+<meta property="article:modified_time" content="2021-05-23T13:39:20.311Z">
+<meta property="article:author" content="Jinlong">
+<meta name="twitter:card" content="summary"><title>mcu_interrupt | Jinlong's Blog</title><link ref="canonical" href="https://liangjinlongfx.github.io/2021/05/10/mcu_soc/mcu-interrupt/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Jinlong's Blog</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">mcu_interrupt</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-10</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-05-23</span></span></div></header><div class="post-body">
+        <h1 id="MCU架构——中断"   >
+          <a href="#MCU架构——中断" class="heading-link"><i class="fas fa-link"></i></a><a href="#MCU架构——中断" class="headerlink" title="MCU架构——中断"></a>MCU架构——中断</h1>
+      <p>&#8195;&#8195;何为中断，就是指处理器接收到来自硬件或者软件的信号，提示发生了某个事件，应该被注意并作出处理。</p>
+<p>&#8195;&#8195;通常，在接收到来自外围硬件（相对于中央处理器和内存）的异步信号，或来自软件的同步信号之后，处理器将会进行相应的硬件／软件处理。发出这样的信号称为进行中断请求（interrupt request，IRQ）。硬件中断导致处理器通过一个运行信息切换（context switch）来保存执行状态（以程序计数器和程序状态字等寄存器信息为主）；软件中断则通常作为CPU指令集中的一个指令，以可编程的方式直接指示这种运行信息切换，并将处理导向一段中断处理代码。中断在计算机多任务处理，尤其是即时系统中尤为有用。这样的系统，包括运行于其上的操作系统，也被称为“中断驱动的”（interrupt-driven）。</p>
+<p>&#8195;&#8195;能够发出中断请求信号的来源统称为<strong>中断源</strong>，CPU跳转执行中断事件处理的逻辑代码程序称为<strong>中断服务程序</strong>。</p>
+<p>&#8195;&#8195;中断系统不单单是响应外部IO的中断，还响应内部的中断请求如定时器、看门狗等。</p>
+
+        <h2 id="中断触发类型"   >
+          <a href="#中断触发类型" class="heading-link"><i class="fas fa-link"></i></a><a href="#中断触发类型" class="headerlink" title="中断触发类型"></a>中断触发类型</h2>
+      <ul>
+<li><p>电平状态触发</p>
+<p>  以等待特定的电平以触发中断。当请求中断时，驱动中断请求线路至特定电平，中断将在在CPU发出强制停止命令或更高优先级中断事件之前始终保持。电平状态触发允许多个设备共享一个中断线路，如低电平触发，在中断线路添加上拉电阻以保证中断请求撤销后及时复位。其缺点是当没有撤销中断电平，则系统一直响应中断则影响其正常运行。</p>
+</li>
+<li><p>边沿触发</p>
+<p>  设备通过向中断线路发送一个脉冲来表示其中断请求。脉冲可以为上升沿或下降沿或者双边沿。在发送完脉冲后设备立即释放中断线路。如果这个脉冲太短，以至于I/O轮询不足以确保知悉其存在，则有必要使用专门的硬件设备来辅助对边沿触发的探查。边沿触发中断容易丢失，特别是当中断被有意屏蔽时。在不引入锁存器的情况下，在屏蔽时段发送的中断信号不可能被恢复。在早期的计算机系统中因为中断丢失而导致处理不能继续的情况时有发生。现代中断硬件多包含有一个或一组中断状态锁存器，用以暂存一逝而过的中断请求。在对边沿触发中断硬件进行编程时，应检查这些中断状态寄存器以确保请求事件不会丢失。</p>
+</li>
+<li><p>混合模式</p>
+<p>  使用状态触发与边沿触发兼顾的混合中断模式。其硬件不但探测脉冲，也验证中断信号是否保持一段时间。</p>
+</li>
+<li><p>消息信号</p>
+<p>  中断消息的识别基于特定的比特码序列而不是物理线路上的单个信号，可以有效地通过设定不同的中断比特码来划分和处理不同类型的中断。另外，使用串行或并行总线都可以传递中断消息。</p>
+</li>
+</ul>
+
+        <h2 id="中断类型"   >
+          <a href="#中断类型" class="heading-link"><i class="fas fa-link"></i></a><a href="#中断类型" class="headerlink" title="中断类型"></a>中断类型</h2>
+      <ul>
+<li><p>可屏蔽中断 (maskable interrupt)</p>
+<p>  硬件中断的一类，可通过在中断屏蔽寄存器中设定位掩码来关闭</p>
+</li>
+<li><p>不可屏蔽中断 (NMI)</p>
+<p>  硬件中断的一类，无法通过在中断屏蔽寄存器中设定位掩码来关闭</p>
+</li>
+<li><p>处理器中断</p>
+<p>  一种特殊的硬件中断。由处理器发出，被其它处理器接收。仅见于多处理器系统，以便于处理器间通信或同步</p>
+</li>
+<li><p>软件中断</p>
+<p>  一条CPU指令，用以自陷一个中断。由于软中断指令通常要运行一个切换CPU至内核态（Kernel Mode/Ring 0）的子例程，它常被用作实现系统调用（System call）</p>
+</li>
+</ul>
+
+        <h2 id="中断处理"   >
+          <a href="#中断处理" class="heading-link"><i class="fas fa-link"></i></a><a href="#中断处理" class="headerlink" title="中断处理"></a>中断处理</h2>
+      <p>&#8195;&#8195;系统响应中断必须通过硬件自动方式或者软件方式保存进入中断前的状态，如保存内核寄存器状态保存。MCU 系统响应中断一般自动保存上下文信息并跳转到该中断对应的地址上运行代码。所有中断跳转地址空间一般是线性分布的，称之为<strong>中断向量表</strong> ，中断向量表每个中断只有极小的地址空间，不足以存放用户的中断处理程序，一般通过跳转到对应的中断事件函数执行，返回后由硬件自动恢复上下文信息以继续按照原有正常程序执行。注意，在中断处理事件中是否影响程序正常需根据实际情况断定。</p>
+<p>&#8195;&#8195;中断事件处理程序应该精简以尽快返回</p>
+
+        <h2 id="中断优先级"   >
+          <a href="#中断优先级" class="heading-link"><i class="fas fa-link"></i></a><a href="#中断优先级" class="headerlink" title="中断优先级"></a>中断优先级</h2>
+      <p>&#8195;&#8195;中断系统中，CPU一般根据各中断请求的轻重缓急分别处理，即给每个中断源确定一个中断优先级别，系统自动对它们进行排队判优，保证首先处理优先级别高的中断请求，待级别高的中断请求处理完毕后，再响应级别较低的中断请求。对多个中断源进行识别和优先级排队的日的就是要确定出最高级别的中断源，并形成该中断源的中断服务程序入口地址，以便CPU将控制转移到该中断服务程序去。一般数字越小，优先级越高。</p>
+<p>&#8195;&#8195;当系统在处理中断的同时，有更高优先级的中断触发，系统则保存当前中断上下位而转向处理更高优先级中断然后回来继续处理低优先级中断。这种逻辑叫<strong>中断嵌套</strong>。有些 MCU 不支持中断嵌套或者不允许中断当前中断处理，则可以通过禁用全局中断方式处理。</p>
+<p>&#8195;&#8195;中断响应原则：</p>
+<ul>
+<li>优先响应高优先级中断</li>
+<li>优先级相同，则根据次序响应</li>
+<li>正在进行的中断过程不能被新的同级或低优先级的中断请求所中断；</li>
+<li>正在进行的低优先级中断过程，能被高优先级中断请求所中断</li>
+</ul>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://liangjinlongfx.github.io">Jinlong</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://liangjinlongfx.github.io/2021/05/10/mcu_soc/mcu-interrupt/">https://liangjinlongfx.github.io/2021/05/10/mcu_soc/mcu-interrupt/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/05/11/fpga-introduction/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">fpga_introduction</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/04/29/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/"><span class="paginator-prev__text">通信协议基础知识</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MCU%E6%9E%B6%E6%9E%84%E2%80%94%E2%80%94%E4%B8%AD%E6%96%AD"><span class="toc-text">
+          MCU架构——中断</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E8%A7%A6%E5%8F%91%E7%B1%BB%E5%9E%8B"><span class="toc-text">
+          中断触发类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E7%B1%BB%E5%9E%8B"><span class="toc-text">
+          中断类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86"><span class="toc-text">
+          中断处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-text">
+          中断优先级</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/images/author_image.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/LiangJinlongFX" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://twitter.com/Jinlong15071708" target="_blank" rel="noopener" data-popover="Twitter" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-twitter"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">12</div><div class="sidebar-ov-state-item__name">归档</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jinlong</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>

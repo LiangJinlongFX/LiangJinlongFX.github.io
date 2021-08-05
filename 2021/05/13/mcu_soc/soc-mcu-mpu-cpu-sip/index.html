@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/assets/facicon/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/assets/facicon/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="CPU (central processing unit)       &amp;#8195;&amp;#8195;中央处理器，对于CPU这个名词可以代指很多概念，如硬件线程、内核、多核处理器单元、电路板上的处理器器件等。需要根据具体问题来阐述CPU这个概念的理解。 如何理解处理器、CPU、多处理器、内核、多核                     MCU (Microc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何理解soc&#x2F;mcu&#x2F;mpu&#x2F;cpu&#x2F;sip&#x2F;模组">
+<meta property="og:url" content="https://liangjinlongfx.github.io/2021/05/13/mcu_soc/soc-mcu-mpu-cpu-sip/index.html">
+<meta property="og:site_name" content="Jinlong&#39;s Blog">
+<meta property="og:description" content="CPU (central processing unit)       &amp;#8195;&amp;#8195;中央处理器，对于CPU这个名词可以代指很多概念，如硬件线程、内核、多核处理器单元、电路板上的处理器器件等。需要根据具体问题来阐述CPU这个概念的理解。 如何理解处理器、CPU、多处理器、内核、多核                     MCU (Microc">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-8455f8e91235e6769f30658640245c9d_720w.jpg?source=1940ef5c">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-fd0a6a9408546032d9a1b29d241d08b5_720w.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-855849912d26890e48799209fd9a962b_720w.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-2ac1239e5b1824db5b997d959b6bf232_720w.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-d6a0a4c1f452595978293ce34817555d_720w.jpg?source=1940ef5c">
+<meta property="article:published_time" content="2021-05-13T14:40:08.000Z">
+<meta property="article:modified_time" content="2021-08-04T14:09:54.286Z">
+<meta property="article:author" content="Jinlong">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic1.zhimg.com/80/v2-8455f8e91235e6769f30658640245c9d_720w.jpg?source=1940ef5c"><title>如何理解soc/mcu/mpu/cpu/sip/模组 | Jinlong's Blog</title><link ref="canonical" href="https://liangjinlongfx.github.io/2021/05/13/mcu_soc/soc-mcu-mpu-cpu-sip/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Jinlong's Blog</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">如何理解soc/mcu/mpu/cpu/sip/模组</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-13</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-08-04</span></span></div></header><div class="post-body">
+        <h2 id="CPU-central-processing-unit"   >
+          <a href="#CPU-central-processing-unit" class="heading-link"><i class="fas fa-link"></i></a><a href="#CPU-central-processing-unit" class="headerlink" title="CPU (central processing unit)"></a>CPU (central processing unit)</h2>
+      <p>&#8195;&#8195;中央处理器，对于CPU这个名词可以代指很多概念，如硬件线程、内核、多核处理器单元、电路板上的处理器器件等。需要根据具体问题来阐述CPU这个概念的理解。</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.zhihu.com/question/321291471/answer/660183713" >如何理解处理器、CPU、多处理器、内核、多核</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h2 id="MCU-Microcontroller-Unit"   >
+          <a href="#MCU-Microcontroller-Unit" class="heading-link"><i class="fas fa-link"></i></a><a href="#MCU-Microcontroller-Unit" class="headerlink" title="MCU (Microcontroller Unit)"></a>MCU (Microcontroller Unit)</h2>
+      <p>&#8195;&#8195;微控制器，也是常说的单片机，其是一般用来完成相关硬件控制任务的简单的计算机系统，将硬件实现比较复杂的状态机流程转换为代码控制的方式。微控制器一般用于如工业控制、家电控制面板等，一般不需要强大的计算处理能力，目前大部分应用下8位机都足矣。</p>
+<p>典型的单片系统包括以下组成成分：</p>
+<ul>
+<li>包含一个或者多个微处理器</li>
+<li>存储器</li>
+<li>提供时钟信号的震荡源和锁相环电路</li>
+<li>外部通信接口</li>
+<li>若干功能模块</li>
+<li>电源调理电路以及稳压器</li>
+</ul>
+
+        <h2 id="MPU-Microprocessor-Unit"   >
+          <a href="#MPU-Microprocessor-Unit" class="heading-link"><i class="fas fa-link"></i></a><a href="#MPU-Microprocessor-Unit" class="headerlink" title="MPU (Microprocessor Unit)"></a>MPU (Microprocessor Unit)</h2>
+      <p>&#8195;&#8195;微处理器，同样，一般场合也是称他为单片机，在MCU的基础上采用了处理性能更为强大的处理核心、也增加了丰富的外设。目前主流的单片机都是32位，如Cortex-M内核等。一般MPU都可以运行</p>
+<p>&#8195;&#8195;下图为主流单片机的架构示意：</p>
+<p><img   src="https://pic1.zhimg.com/80/v2-8455f8e91235e6769f30658640245c9d_720w.jpg?source=1940ef5c" style=""  alt="img"></p>
+
+        <h2 id="SOC-System-on-a-Chip"   >
+          <a href="#SOC-System-on-a-Chip" class="heading-link"><i class="fas fa-link"></i></a><a href="#SOC-System-on-a-Chip" class="headerlink" title="SOC (System on a Chip)"></a>SOC (System on a Chip)</h2>
+      <p>&#8195;&#8195;一般认知的“单片系统”这个术语常被用来指功能更加强大的处理器，目前狭义的SOC与一般单片机的界限在于是否搭载了MMU以及可以运行Windows和Linux的某些版本。单片系统更强的功能要求它具备外部存储芯片，例如有的单片系统配备了闪存。单片系统往往可以连接额外的外部设备。单片系统对半导体器件的集成规模提出了更高的要求。为了更好地执行更复杂的任务，一些单片系统采用了多个处理器核心。<br>&#8195;&#8195;另外，除了运行操作系统，针对专用的领域还集成了专用的IP核，如用于手机设备的SOC一般集成了基带。而用于机顶盒、图像处理等应用的SOC则需要集成图像处理引擎等。</p>
+
+        <h2 id="SiP-System-in-Package"   >
+          <a href="#SiP-System-in-Package" class="heading-link"><i class="fas fa-link"></i></a><a href="#SiP-System-in-Package" class="headerlink" title="SiP (System in Package)"></a>SiP (System in Package)</h2>
+      <p>&#8195;&#8195;<strong>系统级封装</strong>（System in Package, SiP）为一种集成电路封装的概念，是将一个系统或子系统的全部或大部分电子功能配置在集成型衬底内，而芯片以2D、3D的方式接合到集成型衬底的封装方式。SIP不仅可以组装多个芯片，还可以作为一个专门的处理器、DRAM、闪存与被动组件结合电阻器和电容器、连接器、天线等，全部安装在同一衬底上上。这意味着，一个完整的功能单位可以建在一个多芯片封装，因此，需要添加少量的外部组件，使其工作。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-fd0a6a9408546032d9a1b29d241d08b5_720w.jpg" alt="img"></p>
+<p><img src="https://pic4.zhimg.com/80/v2-855849912d26890e48799209fd9a962b_720w.jpg" alt="img"></p>
+<p><img src="https://pic3.zhimg.com/80/v2-2ac1239e5b1824db5b997d959b6bf232_720w.jpg" alt="img"></p>
+
+        <h2 id="模组"   >
+          <a href="#模组" class="heading-link"><i class="fas fa-link"></i></a><a href="#模组" class="headerlink" title="模组"></a>模组</h2>
+      <p>&#8195;&#8195;模组已经超出集成电路的范围，不再是在硅片衬底上集成。而是在电路板上集成，整体打包后作为一个解决方案，给目标客户使用。</p>
+<p><img   src="https://pic1.zhimg.com/80/v2-d6a0a4c1f452595978293ce34817555d_720w.jpg?source=1940ef5c" style=""  alt="img"></p>
+
+        <h2 id="总结"   >
+          <a href="#总结" class="heading-link"><i class="fas fa-link"></i></a><a href="#总结" class="headerlink" title="总结"></a>总结</h2>
+      <p>&#8195;&#8195;以上几种可以属于计算机系统的范围，其主要是根据集成的复杂度、计算处理能力等因素对其的划分。计算机系统集成不仅限于硅片衬底、也可以是板级的，我们不必太多注重怎么定义，因为其都是一种系统集成复杂度的描述。</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://liangjinlongfx.github.io">Jinlong</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://liangjinlongfx.github.io/2021/05/13/mcu_soc/soc-mcu-mpu-cpu-sip/">https://liangjinlongfx.github.io/2021/05/13/mcu_soc/soc-mcu-mpu-cpu-sip/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/05/18/mcu_soc/mcu-gpio/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">mcu_io_type</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/05/11/fpga-introduction/"><span class="paginator-prev__text">fpga_introduction</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU-central-processing-unit"><span class="toc-text">
+          CPU (central processing unit)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MCU-Microcontroller-Unit"><span class="toc-text">
+          MCU (Microcontroller Unit)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MPU-Microprocessor-Unit"><span class="toc-text">
+          MPU (Microprocessor Unit)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SOC-System-on-a-Chip"><span class="toc-text">
+          SOC (System on a Chip)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SiP-System-in-Package"><span class="toc-text">
+          SiP (System in Package)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E7%BB%84"><span class="toc-text">
+          模组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">
+          总结</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/images/author_image.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/LiangJinlongFX" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://twitter.com/Jinlong15071708" target="_blank" rel="noopener" data-popover="Twitter" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-twitter"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">12</div><div class="sidebar-ov-state-item__name">归档</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jinlong</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>

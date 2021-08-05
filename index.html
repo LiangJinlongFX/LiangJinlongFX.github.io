@@ -28,102 +28,473 @@ var CONFIG = {
   sourcePath: {"js":"js","css":"css","images":"images"},
 };
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Jinlong's Blog</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/04/29/sci-list/">常见通信协议</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-04-29</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-05-08</span></span></div></header><div class="post-body"><div class="post-excerpt">
-        <h2 id="通信协议"   >
-          <a href="#通信协议" class="heading-link"><i class="fas fa-link"></i></a><a href="#通信协议" class="headerlink" title="通信协议"></a>通信协议</h2>
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Jinlong's Blog</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/06/03/mcu_soc/mcu-sdk/">mcu-bsp</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-06-03</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-03</span></span></div></header><div class="post-body"><div class="post-excerpt">
+        <h1 id="SDK-BSP"   >
+          <a href="#SDK-BSP" class="heading-link"><i class="fas fa-link"></i></a><a href="#SDK-BSP" class="headerlink" title="SDK/BSP"></a>SDK/BSP</h1>
       
-        <h2 id="基础概念"   >
-          <a href="#基础概念" class="heading-link"><i class="fas fa-link"></i></a><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2>
+        <h2 id="SDK"   >
+          <a href="#SDK" class="heading-link"><i class="fas fa-link"></i></a><a href="#SDK" class="headerlink" title="SDK"></a>SDK</h2>
+      <p>&#8195;&#8195;芯片制造商针对 MCU 的软件开发一般会提供一些源码以及工具等资源的开发包。注意该 SDK 定义仅是针对于 MCU 嵌入式软件开发领域的定义</p>
+
+        <h3 id="MCU开发包内容"   >
+          <a href="#MCU开发包内容" class="heading-link"><i class="fas fa-link"></i></a><a href="#MCU开发包内容" class="headerlink" title="MCU开发包内容"></a>MCU开发包内容</h3>
       
-        <h3 id="串行-amp-并行通信"   >
-          <a href="#串行-amp-并行通信" class="heading-link"><i class="fas fa-link"></i></a><a href="#串行-amp-并行通信" class="headerlink" title="串行 &amp; 并行通信"></a>串行 &amp; 并行通信</h3>
-      <p>​    在串行通信中要传输的数据逐位按顺序传送，其特点为数据位传送、按位传送、最少仅一根数据线传输即可，节约了信号线开销但其传输速度较慢，串行信号本身也可以带有时钟信息，并且可以通过算法校正时钟。因此不需要额外的时钟信号进行控制。</p>
-<p>​    而并行通信相对于串行通信使用更多的数据线，在一次可以发送更多的比特位，一般数据线宽度为 8/16/32 位，大大提高了数据传输速度。并行通讯中，数据信号中无法携带时钟信息，为了保证各对信号线上的信号时序一致，并行设备需要严格同步时钟信号，或者采用额外的时钟信号线。</p>
-<p>​    串行通讯很简单，但是相对速度低；并行通讯比较复杂，但是相对速度高。更重要的是，串行线路线路成本低并且抗干扰能力强，因此可以用在长距离通讯上；而并行线路使用多对信号线（还不包括额外的控制线路），线路成本高并且抗干扰能力差，因此对通讯距离有非常严格的限制。</p>
+        <h4 id="芯片内核相关源码"   >
+          <a href="#芯片内核相关源码" class="heading-link"><i class="fas fa-link"></i></a><a href="#芯片内核相关源码" class="headerlink" title="芯片内核相关源码"></a>芯片内核相关源码</h4>
+      <p>&#8195;&#8195;如 Cortex-M 内核的 MCU，一般会提供 CMSIS 组件包，对内核的软件编程都是基于 CMSIS 进行开发的，同时也会提供基于该芯片的内核启动汇编代码文件</p>
 
-        <h3 id="同步-amp-异步通信"   >
-          <a href="#同步-amp-异步通信" class="heading-link"><i class="fas fa-link"></i></a><a href="#同步-amp-异步通信" class="headerlink" title="同步 &amp; 异步通信"></a>同步 &amp; 异步通信</h3>
-      <p>​    同步通信中：</p>
-<ul>
-<li>要求双方共用一个的时钟，总线上按照统一的时序和周期完成信息传输。</li>
-<li>将许多字符组成一个信息组，这个信息组分成一个个字符进行传输，同步字符加在信息组中，而不是每一个字符。</li>
-<li>在同步传输中，需前约定一个字符可以对应N位（一般是5-8）位。且在同一个传输过程中，发送和接收按同样的数位进行解析。</li>
-<li>在同步通讯中，收发设备在时钟信号的驱动下双方进行协调，同步数据。例如，通讯中通常双方会统一规定在时钟信号的上升沿或者下降沿对数据线进行采样。</li>
-<li>同步通讯的数据信号所传输的内容绝大部分是有效数据，通信效率较高</li>
-<li>同步通讯双方的时钟允许误差小，稍稍时钟出错就可能导致数据错乱</li>
-<li>同步通信可用于点对多点</li>
-</ul>
-<p>​    异步通信中：</p>
-<ul>
-<li>每传输一个字符，都包含起始位和停止位。字符之间没有固定的时间要求，通信效率较低</li>
-<li>接收方并不知道数据什么时候会到达，收发双方可以有各自自己的时钟。</li>
-<li>异步通讯双方的时钟允许误差较大</li>
-<li>异步通信适用于点对点</li>
-</ul>
+        <h4 id="芯片外设的相关源码"   >
+          <a href="#芯片外设的相关源码" class="heading-link"><i class="fas fa-link"></i></a><a href="#芯片外设的相关源码" class="headerlink" title="芯片外设的相关源码"></a>芯片外设的相关源码</h4>
+      <p>&#8195;&#8195;提供外设访问的相关软件接口源码</p>
 
-        <h3 id="双工模式"   >
-          <a href="#双工模式" class="heading-link"><i class="fas fa-link"></i></a><a href="#双工模式" class="headerlink" title="双工模式"></a>双工模式</h3>
-      <p>​    通信双方的数据交互方向</p>
-<ul>
-<li><p>单工</p>
-<p>通信数据单方向传送</p>
-</li>
-<li><p>半双工</p>
-<p>数据能双方传输但不能同时进行，如对讲机</p>
-</li>
-<li><p>全双工</p>
-<p>通信双方能同时相互传输数据</p>
-</li>
-</ul>
+        <h4 id="BSP-模板工程代码"   >
+          <a href="#BSP-模板工程代码" class="heading-link"><i class="fas fa-link"></i></a><a href="#BSP-模板工程代码" class="headerlink" title="BSP 模板工程代码"></a>BSP 模板工程代码</h4>
+      <p>&#8195;&#8195;提供 Keil/IAP/Eclipse 等IDE示例工程</p>
 
-        <h3 id="流控制"   >
-          <a href="#流控制" class="heading-link"><i class="fas fa-link"></i></a><a href="#流控制" class="headerlink" title="流控制"></a>流控制</h3>
-      <p>​    这里讲到的“流”，当然指的是数据流。数据在两个串口之间传输时，常常会出现丢失数据的现象，或者两台计算机的处理速度不同，如台式机与单片机之间的通讯，接收端数据缓冲区已满，则此时继续发送来的数据就会丢失。控制能解决这个问题，当接收端数据处理不过来时，就发出“不再接收”的信号，发送端就停止发送，直到收到“可以继续发送”的信号再发送数据。因此流控制可以控制数据传输的进程，防止数据的丢失。 pc机中常用的两种流控制是硬件流控制(包括rts/cts、dtr/dsr等)和软件流控制xon/xoff(继续/停止)。</p>
+        <h4 id="板载外设的相关源码"   >
+          <a href="#板载外设的相关源码" class="heading-link"><i class="fas fa-link"></i></a><a href="#板载外设的相关源码" class="headerlink" title="板载外设的相关源码"></a>板载外设的相关源码</h4>
+      <p>&#8195;&#8195;一般提供针对评估板载外设的驱动代码</p>
 
-        <h3 id="通信物理接口"   >
-          <a href="#通信物理接口" class="heading-link"><i class="fas fa-link"></i></a><a href="#通信物理接口" class="headerlink" title="通信物理接口"></a>通信物理接口</h3>
-      
-        <h4 id="通信逻辑电平"   >
-          <a href="#通信逻辑电平" class="heading-link"><i class="fas fa-link"></i></a><a href="#通信逻辑电平" class="headerlink" title="通信逻辑电平"></a>通信逻辑电平</h4>
-      <p>​        通信逻辑电平规定逻辑 ”0“ 以及 逻辑 ”1“ 的电压范围，同一种通信协议可能其通信逻辑电平有所区别</p>
+        <h4 id="评估板的示例代码"   >
+          <a href="#评估板的示例代码" class="heading-link"><i class="fas fa-link"></i></a><a href="#评估板的示例代码" class="headerlink" title="评估板的示例代码"></a>评估板的示例代码</h4>
+      <p>&#8195;&#8195;提供基于此款或者此系列 MCU 评估板的 BSP 示例代码</p>
 
-        <h4 id="信号IO特性"   >
-          <a href="#信号IO特性" class="heading-link"><i class="fas fa-link"></i></a><a href="#信号IO特性" class="headerlink" title="信号IO特性"></a>信号IO特性</h4>
+        <h4 id="中间层库"   >
+          <a href="#中间层库" class="heading-link"><i class="fas fa-link"></i></a><a href="#中间层库" class="headerlink" title="中间层库"></a>中间层库</h4>
+      <p>&#8195;&#8195;一般提供 FreeRTOS、FatFs、USB Stack 等开源代码</p>
+
+        <h4 id="文档"   >
+          <a href="#文档" class="heading-link"><i class="fas fa-link"></i></a><a href="#文档" class="headerlink" title="文档"></a>文档</h4>
+      <p>​    &#8195;&#8195;驱动代码使用指南以及API参考等</p>
+
+        <h4 id="配置工具"   >
+          <a href="#配置工具" class="heading-link"><i class="fas fa-link"></i></a><a href="#配置工具" class="headerlink" title="配置工具"></a>配置工具</h4>
       <ul>
-<li><p>漏极开路 (OC门)</p>
-<p>输出侧上拉电阻（pull-up resistor）连接的电压不一定需要使用与输入侧IC同样的电源（VCC），可以是用更低或更高的电压来代替。因此，集电极开路电路有时用于连接不同工作电位、或用于外部电路需要更高电压的场合。</p>
-<p>可以将几个 OC 连接在一起形成“线与（wired AND）”（正逻辑，即高电平代表真）或“线或（wired OR）”（负逻辑，低电平代表真）。</p>
-<p>OC 唯一的问题就是功率耗损。因为这样的配置往往需要较高的电流才能正确的工作，即使在关闭的状态，也通常会有几个 nA 的泄漏电流，更不用说输出侧上拉电阻所带来的损耗。</p>
-<p>一般来说，开漏是用来连接不同电平的器件，匹配电平用的，因为开漏引脚不连接外部的上拉电阻时，只能输出低电平，如果需要同时具备输出高电平的功能，则需要接上拉电阻，很好的一个优点是通过改变上拉电源的电压，便可以改变传输电平。比如加上上拉电阻就可以提供TTL/CMOS电平输出等。（上拉电阻的阻值决定了逻辑电平转换的沿的速度 。阻值越大，速度越低功耗越小，所以负载电阻的选择要兼顾功耗和速度。）</p>
-<p>OPEN-DRAIN提供了灵活的输出方式，但是也有其弱点，就是带来上升沿的延时。因为上升沿是通过外接上拉无源电阻对负载充电，所以当电阻选择小时延时就小，但功耗大；反之延时大功耗小。所以如果对延时有要求，则建议用下降沿输出。</p>
-</li>
-<li><p>推挽输出</p>
-<p>导通损耗小、效率高。输出既可以向负载灌电流，也可以从负载抽取电流（拉电流）。推拉式输出级既能提高电路的负载能力，又能提高开关速度。</p>
-</li>
+<li>时钟树配置</li>
+<li>外设配置</li>
+<li>引脚功能配置</li>
+<li>自定义配置的 IDE 工程生成</li>
 </ul>
 
-        <h4 id="差分传输-amp-单端信号传输"   >
-          <a href="#差分传输-amp-单端信号传输" class="heading-link"><i class="fas fa-link"></i></a><a href="#差分传输-amp-单端信号传输" class="headerlink" title="差分传输 &amp; 单端信号传输"></a>差分传输 &amp; 单端信号传输</h4>
-      <p>​        是一种信号传输的技术，区别于传统的一根信号线一根地线的单端信号传输，差分传输在这两根线上都传输信号，这两个信号的振幅相同，相位相反。在这两根线上的传输的信号就是<strong>差分信号</strong>。信号接收端比较这两个电压的差值来判断发送端发送的逻辑状态。在电路板上，<strong>差分走线</strong>必须是等长、等宽、紧密靠近、且在同一层面的两根线。</p>
-<p>​        单端信号传输就是一个信号线与一根地线构成信号回路进行传输</p>
+        <h3 id="NXP-MCUXpresso-SDK"   >
+          <a href="#NXP-MCUXpresso-SDK" class="heading-link"><i class="fas fa-link"></i></a><a href="#NXP-MCUXpresso-SDK" class="headerlink" title="NXP MCUXpresso SDK"></a>NXP MCUXpresso SDK</h3>
+      <p>​    MCUXpress Software Development Kit (SDK)  提供了 NXP 旗下 Kinetis 以及 LPC 系列 MCU 的 板级支持包，其相关资源图示如下：</p>
+<p><img src="MCUXpresso_Layer.PNG"></p>
+<p>&#8195;&#8195;相关的资源可以在 <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://mcuxpresso.nxp.com/en/welcome" >Welcome | MCUXpresso SDK Builder (nxp.com)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 下载</p>
 
-        <h4 id="在信号线夹带时钟，时间隙区分”0“与”1“"   >
-          <a href="#在信号线夹带时钟，时间隙区分”0“与”1“" class="heading-link"><i class="fas fa-link"></i></a><a href="#在信号线夹带时钟，时间隙区分”0“与”1“" class="headerlink" title="在信号线夹带时钟，时间隙区分”0“与”1“"></a>在信号线夹带时钟，时间隙区分”0“与”1“</h4>
-      <p>​        如 1-Wire 通信协议，其空闲保持高电平，当拉低后表示同步传送一位数据，根据”0“与”1“的时间隙区分比特数据，这种通信对时间精度要求比较苛刻。</p>
-
-        <h3 id="协议栈"   >
-          <a href="#协议栈" class="heading-link"><i class="fas fa-link"></i></a><a href="#协议栈" class="headerlink" title="协议栈"></a>协议栈</h3>
-      <p>​        协议套件中的一个协议通常是只为一个目的而设计的，这样可以使得设计更容易。因为每个协议模块通常都要和上下两个其他协议模块通信，它们通常可以想象成是协议栈中的层。最低级的协议总是描述与硬件的物理交互。每个高级的层次增加更多的特性。用户应用程序只是处理最上层的协议。</p>
-
-        <h3 id="通信角色"   >
-          <a href="#通信角色" class="heading-link"><i class="fas fa-link"></i></a><a href="#通信角色" class="headerlink" title="通信角色"></a>通信角色</h3>
-      </div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/04/27/open-source-license/">开源许可证 &amp; 知识共享许可协议</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-04-27</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-04-30</span></span></div></header><div class="post-body"><div class="post-excerpt">介绍开源许可证的作用，以及根据开源许可证使用开源项目</div><div class="post-readmore"><a class="post-readmore__link" href="/2021/04/27/open-source-license/"><span class="post-readmore__text">阅读全文</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/04/26/hello-hexo/">hello hexo</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-04-26</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-04-30</span></span></div></header><div class="post-body"><div class="post-excerpt"><p>​        本个人博客是基于 Github Pages 和 Hexo 进行搭建，如需了解更多，请参阅 [<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://hexo.io/zh-tw/" >Hexo官网</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>] 。</p>
-
-        <h2 id="常见问题"   >
-          <a href="#常见问题" class="heading-link"><i class="fas fa-link"></i></a><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2>
+        <h4 id="支持的-IDE-以及交叉编译工具链"   >
+          <a href="#支持的-IDE-以及交叉编译工具链" class="heading-link"><i class="fas fa-link"></i></a><a href="#支持的-IDE-以及交叉编译工具链" class="headerlink" title="支持的 IDE 以及交叉编译工具链"></a>支持的 IDE 以及交叉编译工具链</h4>
       <ul>
-<li><p>在本地正常，而部署到 Github Pages 后显示与本地不一致</p>
-<p>浏览器缓存可能导致显示异常，尝试 Ctrl+F5 强制刷新</p>
+<li><p>keil</p>
+<p>  提供 MCUXpresso SDK 源码的 Pack</p>
+</li>
+<li><p>IAR</p>
+</li>
+<li><p>MCUPresso</p>
+<p>  NXP 基于 eclipse 开发的 IDE</p>
+</li>
+<li><p>ARM CC</p>
+</li>
+<li><p>ARM-GCC</p>
 </li>
 </ul>
-</div></div></article></section><nav class="paginator"><div class="paginator-inner"><span class="page-number current">1</span></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/images/author_image.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/LiangJinlongFX" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://twitter.com/Jinlong15071708" target="_blank" rel="noopener" data-popover="Twitter" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-twitter"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">3</div><div class="sidebar-ov-state-item__name">归档</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jinlong</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
+
+        <h4 id="相关的配置工具"   >
+          <a href="#相关的配置工具" class="heading-link"><i class="fas fa-link"></i></a><a href="#相关的配置工具" class="headerlink" title="相关的配置工具"></a>相关的配置工具</h4>
+      
+        <h2 id="BSP"   >
+          <a href="#BSP" class="heading-link"><i class="fas fa-link"></i></a><a href="#BSP" class="headerlink" title="BSP"></a>BSP</h2>
+      <p>&#8195;&#8195;BSP 即 <em>Board Support Package</em>，板级支持包。它来源于嵌入式操作系统与硬件无关的设计思想，操作系统被设计为运行在虚拟的硬件平台上。对于具体的硬件平台，与硬件相关的代码都被封装在<em>BSP</em>中，由 BSP 向上提供虚拟的硬件平台，<em>BSP</em>与操作系统通过定义好的接口进行交互。BSP 是所有与硬件相关的代码体的集合。一个成熟的商用操作系统，其被广泛应用的必要条件之一就是能够支持众多的硬件平台，并实现应用程序的硬件无关性。一般来说，这种无关性都是由操作系统实现的。但对于嵌入式系统来说，它没有像 PC 机那样具有广泛使用的各种工业标准、统一的硬件结构。各种嵌入式系统各不同的应用需求就决定了它一般都选用各自定制的硬件环境，每种嵌入式系统从核心的处理器到外部芯片在硬件结构上都有很大的不同。这种诸多变化的硬件环境就决定了无法完全由操作系统来实现上层软件与底层硬件之间的无关性。因此各种商用实时操作系统，都采用了分层设计的方法，它将系统中与硬件直接相关的一层软件独立出来，称之为 Board Support Package，简称为 BSP。顾名思义，<em>BSP</em>是针对某个特定的单板而设计的。如果没有单板支持软件包，则操作系统就不能在单板上运行。并且它对于用户（指开发者）也是开放的，用户可以根据不同的硬件需求对其作改动或二次开发。</p>
+<p>​    对于运行 Linux 系统的 SOC，SOC 厂商都会提供基于 SOC 评估板以用于 uboot 以及 linux 内核的 BSP。而对于 MCU 运行 RTOS. 更多的是需要开发者根据 MCU 开发包基于实际硬件情况去开发自己的 BSP。</p>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/05/24/mcu_soc/mcu-pwr-rcc/">mcu-pwr-rcc</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-24</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-23</span></span></div></header><div class="post-body"><div class="post-excerpt">
+        <h1 id="电源管理-PWR"   >
+          <a href="#电源管理-PWR" class="heading-link"><i class="fas fa-link"></i></a><a href="#电源管理-PWR" class="headerlink" title="电源管理 PWR"></a>电源管理 PWR</h1>
+      
+        <h2 id="电源输入引脚"   >
+          <a href="#电源输入引脚" class="heading-link"><i class="fas fa-link"></i></a><a href="#电源输入引脚" class="headerlink" title="电源输入引脚"></a>电源输入引脚</h2>
+      
+        <h3 id="SOC-外部为什么有多组-VDD-VSS"   >
+          <a href="#SOC-外部为什么有多组-VDD-VSS" class="heading-link"><i class="fas fa-link"></i></a><a href="#SOC-外部为什么有多组-VDD-VSS" class="headerlink" title="SOC 外部为什么有多组 VDD/VSS"></a>SOC 外部为什么有多组 VDD/VSS</h3>
+      <p>&#8195;&#8195;原因主要有以下几点：</p>
+<ol>
+<li><p>芯片内部有很多功能单元，这些单元都需要供电，采用多引脚供电可以就近获取电源，无需在内部穿越。</p>
+</li>
+<li><p>不同单元之间，有时不希望电源互相影响，采用独立的电源引脚，可以避免这种影响。所以，<strong>多组VDD之间可能不连通</strong></p>
+</li>
+<li><p>实际使用时，每个引脚不但要连接电源，还应在电源引脚附近加上退藕电容。其目的是当器件工作时，电流的变化会引起电源的电压微小波动，加上退藕电容后，这种波动就不容易传递到另外的电源引脚。</p>
+<p> 在电路设计中对供电引脚需要考虑几点：</p>
+</li>
+</ol>
+<ul>
+<li>尽管所有VDD和所有VSS在内部相连，在芯片外部仍然需要连接上所有的VDD和VSS。因为导线较细，内部连接负载能力较差，抗干扰的能力也较差，如果漏接VDD或VSS，容易造成内部线路损坏，同时抗干扰能力下降</li>
+<li>每对VDD与VSS都必须在尽可能靠近芯片处放置滤波电容</li>
+</ul>
+
+        <h3 id="VDD-VDDA-VDDIO"   >
+          <a href="#VDD-VDDA-VDDIO" class="heading-link"><i class="fas fa-link"></i></a><a href="#VDD-VDDA-VDDIO" class="headerlink" title="VDD / VDDA /VDDIO"></a>VDD / VDDA /VDDIO</h3>
+      <p>&#8195;&#8195;VDD 表示主电源、VDDA 为模拟部分供电电源，而 VDDIO 则是 GPIO 供电电源。一些芯片将这三类电源分别用单独电源引脚引出，但其一般共用一个电源，电源之间压差有具体要求，具体参考 datasheet，也有芯片直接整合为一种类型的 VDD 引脚。</p>
+
+        <h3 id="内部-LDO"   >
+          <a href="#内部-LDO" class="heading-link"><i class="fas fa-link"></i></a><a href="#内部-LDO" class="headerlink" title="内部 LDO"></a>内部 LDO</h3>
+      <p>&#8195;&#8195;一些专用芯片如车用芯片，内置高压 LDO，可用于只有单一高压电源的系统，因此不需要为其生成额外的电源，以减少外部电源器件使用以及提高稳定性，内部 LDO 可能需要外接 R/C 等辅助器件。当然除了使用内置高压 LDO，可允许用户使用正常的 VDD.</p>
+<p>&#8195;&#8195;一些低功耗芯片也有内置低电压的 LDO，以满足特殊需求。</p>
+
+        <h2 id="电源域"   >
+          <a href="#电源域" class="heading-link"><i class="fas fa-link"></i></a><a href="#电源域" class="headerlink" title="电源域"></a>电源域</h2>
+      <p>&#8195;&#8195;为满足 SOC 不同工作模式的功耗要求，通常将内部电源控制划分不同的区域，以根据实际需求细分电源供应区域。如外设，允许通过配置寄存器方式开闭相应外设的电源</p>
+
+        <h2 id="电源监视器"   >
+          <a href="#电源监视器" class="heading-link"><i class="fas fa-link"></i></a><a href="#电源监视器" class="headerlink" title="电源监视器"></a>电源监视器</h2>
+      <p>&#8195;&#8195;电源监视器当检测到器件供电电压发生变化时产生复位等动作，常见的有：</p>
+<ul>
+<li><p>上电复位 (POR) 和 掉电复位 (PDR)</p>
+<p>  当 VDD/VDDA 低于指定阈值 VPOR/PDR 时，器件无需外部复位电路便会保持复位状态。有关上电/掉电复位阈值的相关详细信息，请参见数据手册的电气特性部分</p>
+</li>
+<li><p>欠压复位 (PDR)</p>
+<p>  上电期间，欠压复位 (BOR) 将使器件保持复位状态，直到电源电压达到指定的 VBOR 阈值，VBOR 阈值高于 VPOR/PDR，其阈值允许用户配置</p>
+</li>
+<li><p>可编程电压检测器 (PVD)</p>
+<p>  指示 VDD 是大于还是小于 PVD 阈值，并产生相应的中断事件，该功能的用处之一就是可以在中断服务程序中执行紧急关闭系统的任务。</p>
+</li>
+</ul>
+
+        <h1 id="时钟配置"   >
+          <a href="#时钟配置" class="heading-link"><i class="fas fa-link"></i></a><a href="#时钟配置" class="headerlink" title="时钟配置"></a>时钟配置</h1>
+      
+        <h2 id="时钟源"   >
+          <a href="#时钟源" class="heading-link"><i class="fas fa-link"></i></a><a href="#时钟源" class="headerlink" title="时钟源"></a>时钟源</h2>
+      <p>&#8195;&#8195;一般 MCU 时钟源分为内部以及外部两大类型，同时根据时钟快慢又细分为高速时钟以及低速时钟两类，即 HSE、LSE、HSI、LSI. 还有一些用于特定外设的固定时钟源。外部高速时钟一般为 MHz 单位为主要的时钟源，而外部低速时钟一般为 32.768 kHz，用于 RTC、WDT 等提供时钟源。外部时钟一般为无源晶振或者时钟信号输入，而内部时钟源一般为 RC 振荡器，其震荡频率精度不高且频率较低。具体器件应查看 datasheet 确定其时钟源有哪些</p>
+
+        <h2 id="时钟树"   >
+          <a href="#时钟树" class="heading-link"><i class="fas fa-link"></i></a><a href="#时钟树" class="headerlink" title="时钟树"></a>时钟树</h2>
+      <p>&#8195;&#8195;时钟源出来的时钟并不直接时钟，一般需要经过分频以及倍频的处理以分别提供给内核、总线、外设等组件。时钟配置一般以树状结构方式以可视化配置，一般 MCU 内部存在多个 PLL 以及 分频器以配置合适的时钟，一般时钟类型分为：</p>
+<ul>
+<li>系统核心时钟</li>
+<li>总线时钟</li>
+<li>外设时钟（按需使能以降低功耗）</li>
+</ul>
+
+        <h2 id="复位管理"   >
+          <a href="#复位管理" class="heading-link"><i class="fas fa-link"></i></a><a href="#复位管理" class="headerlink" title="复位管理"></a>复位管理</h2>
+      </div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/05/23/mcu_soc/mcu-dma/">mcu-dma</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-23</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-05-24</span></span></div></header><div class="post-body"><div class="post-excerpt">
+        <h1 id="MCU-DMA-控制器"   >
+          <a href="#MCU-DMA-控制器" class="heading-link"><i class="fas fa-link"></i></a><a href="#MCU-DMA-控制器" class="headerlink" title="MCU DMA 控制器"></a>MCU DMA 控制器</h1>
+      <p>&#8195;&#8195;DMA，全称Direct Memory Access，即直接存储器访问。DMA传输将数据从一个地址空间复制到另一个地址空间，提供在外设和存储器之间或者存储器和存储器之间的高速数据传输。当CPU初始化这个传输动作，传输动作本身是由DMA控制器来实现和完成的。DMA传输方式无需CPU直接控制传输，也没有中断处理方式那样保留现场和恢复现场过程，通过硬件为RAM和IO设备开辟一条直接传输数据的通道，使得CPU的效率大大提高。</p>
+
+        <h2 id="DMA-控制器（STM32）"   >
+          <a href="#DMA-控制器（STM32）" class="heading-link"><i class="fas fa-link"></i></a><a href="#DMA-控制器（STM32）" class="headerlink" title="DMA 控制器（STM32）"></a>DMA 控制器（STM32）</h2>
+      <ul>
+<li>双 AHB 主总线架构，一个用于存储器访问，另一个用于外设访问</li>
+<li>DMA 控制器有 8 个数据流，每个数据流有多达 8 个通道（或称请求）</li>
+<li>每个数据流有单独的四级 32 位先进先出存储器缓冲区 (FIFO)，可用于 FIFO 模式或直<br>  接模式<ul>
+<li>FIFO 模式：可通过软件将阈值级别选取为 FIFO 大小的 1/4、1/2 或 3/4，数据缓存到 FIFO</li>
+<li>直接模式：每个 DMA 请求会立即启动对存储器的传输</li>
+</ul>
+</li>
+<li>DMA 数据流请求之间的优先级可用软件编程（4 个级别：非常高、高、中、低），在软<br>  件优先级相同的情况下可以通过硬件决定优先级（例如，请求 0 的优先级高于请求 1）</li>
+<li>要传输的数据项的数目可以由 DMA 控制器或外设管理</li>
+<li>独立的源和目标传输宽度（字节、半字、字）：源和目标的数据宽度不相等时，DMA 自动<br>  封装/解封必要的传输数据来优化带宽</li>
+<li></li>
+</ul>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/05/21/mcu_soc/mcu-comm-ports/">mcu-comm-ports</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-21</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-01</span></span></div></header><div class="post-body"><div class="post-excerpt">
+        <h1 id="MCU-常见的通信接口"   >
+          <a href="#MCU-常见的通信接口" class="heading-link"><i class="fas fa-link"></i></a><a href="#MCU-常见的通信接口" class="headerlink" title="MCU 常见的通信接口"></a>MCU 常见的通信接口</h1>
+      
+        <h2 id="IIC"   >
+          <a href="#IIC" class="heading-link"><i class="fas fa-link"></i></a><a href="#IIC" class="headerlink" title="IIC"></a>IIC</h2>
+      
+        <h3 id="常见-IIC-接口特性"   >
+          <a href="#常见-IIC-接口特性" class="heading-link"><i class="fas fa-link"></i></a><a href="#常见-IIC-接口特性" class="headerlink" title="常见 IIC 接口特性"></a>常见 IIC 接口特性</h3>
+      <ul>
+<li>既可用作主模式也可用作从模式</li>
+<li>IIC 主模式特性：时钟生成以及起始位和停止位生成</li>
+<li>IIC 从模式特性：可编程 I2C 地址检测、对特定的从地址应答、地址位数设置，停止位检测</li>
+<li>支持 SMBus</li>
+<li>可选的应答位响应以及发送</li>
+<li>相关的状态标志以及中断事件</li>
+<li>DMA收发</li>
+</ul>
+
+        <h2 id="USART-通用同步异步收发器"   >
+          <a href="#USART-通用同步异步收发器" class="heading-link"><i class="fas fa-link"></i></a><a href="#USART-通用同步异步收发器" class="headerlink" title="USART 通用同步异步收发器"></a>USART 通用同步异步收发器</h2>
+      
+        <h3 id="常见-USART-接口特性"   >
+          <a href="#常见-USART-接口特性" class="heading-link"><i class="fas fa-link"></i></a><a href="#常见-USART-接口特性" class="headerlink" title="常见 USART 接口特性"></a>常见 USART 接口特性</h3>
+      <ul>
+<li>支持全双工的异步通信</li>
+<li>支持半双工的同步通信</li>
+<li>数据帧位数可配置，停止位数可配置、奇偶校验位配置</li>
+<li>支持硬件流控制 nCTS 、nRTS</li>
+<li>RX 过采样技，过采样技术可区分有效输入数据和噪声，从而用于恢复数据。</li>
+<li>小数波特率发生器系统</li>
+<li>相关的状态标志以及中断事件</li>
+<li>DMA收发</li>
+</ul>
+
+        <h2 id="SPI-串行外设接口"   >
+          <a href="#SPI-串行外设接口" class="heading-link"><i class="fas fa-link"></i></a><a href="#SPI-串行外设接口" class="headerlink" title="SPI 串行外设接口"></a>SPI 串行外设接口</h2>
+      
+        <h3 id="常见-SPI-接口特性"   >
+          <a href="#常见-SPI-接口特性" class="heading-link"><i class="fas fa-link"></i></a><a href="#常见-SPI-接口特性" class="headerlink" title="常见 SPI 接口特性"></a>常见 SPI 接口特性</h3>
+      <ul>
+<li>可用作主模式或者从模式的全双工或者半双工同步通信</li>
+<li>可通过硬件或者软件进行 NSS 管理</li>
+<li>可设置的时钟极性和相位，可选的发送顺序和数据位数</li>
+<li>相关的状态标志以及中断事件</li>
+<li>DMA收发</li>
+</ul>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/05/18/mcu_soc/mcu-gpio/">mcu_io_type</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-18</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-05-19</span></span></div></header><div class="post-body"><div class="post-excerpt"><p>&#8195;&#8195;GPIO，即通用输入输出端口，是 MCU 必不可少的外设之一，通俗来说，就是 MCU 可以被程序控制的管脚。通过程序控制 GPIO 从而读写引脚上的电平状态。GPIO 不仅用于控制引脚电平，还可以复用为一些通信端口的信号引脚。</p>
+
+        <h2 id="GPIO-电路结构"   >
+          <a href="#GPIO-电路结构" class="heading-link"><i class="fas fa-link"></i></a><a href="#GPIO-电路结构" class="headerlink" title="GPIO 电路结构"></a>GPIO 电路结构</h2>
+      <p>&#8195;&#8195;下图描述了 STM32F1xx 的 GPIO 内部电路结构，大部分 MCU 的 GPIO 电路结构与此大同小异，部分特殊 IO 结构有所出入。</p>
+<p>​    <img src="/STM32F1xxGPIO%E7%94%B5%E8%B7%AF.png" alt="image-20210518231435748"></p>
+<p>&#8195;&#8195;从右往左看，外部引脚进来有一个上下保护二极管，用于避免应电流倒灌等异常造成内部电路损坏。接着为设置通断的上下拉电阻，具体阻值参考芯片 datasheet。内部分为输入以及输出两大部分，输入输出电路电平处于线与的逻辑，因此在设置输出的电平状态也会反馈到输入部分。输入部分，输入状态寄存器通过一个触发器获取电平数值，部分MCU也可能是直接获取当前引脚电平状态的</p>
+
+        <h2 id="GPIO-模式"   >
+          <a href="#GPIO-模式" class="heading-link"><i class="fas fa-link"></i></a><a href="#GPIO-模式" class="headerlink" title="GPIO 模式"></a>GPIO 模式</h2>
+      <p>&#8195;&#8195;为适应不同的控制\通信电路，GPIO 通常可配置为多种 I/O 电路模式。</p>
+
+        <h3 id="浮空输入"   >
+          <a href="#浮空输入" class="heading-link"><i class="fas fa-link"></i></a><a href="#浮空输入" class="headerlink" title="浮空输入"></a>浮空输入</h3>
+      <p>&#8195;&#8195;引脚电平通过施密特触发器后直接保存在输入寄存器里面。输出控制保持断开高阻状态。外部输入时0读出的就是0，外部输入时1读出的就是1，外部没有输入IO处于阻塞读不出电平状态。在读取一段一段的波形，可以清晰的知道什么时候是0信号，什么时候是1信号，什么时候是没有信号的。</p>
+
+        <h3 id="上拉-下拉输入"   >
+          <a href="#上拉-下拉输入" class="heading-link"><i class="fas fa-link"></i></a><a href="#上拉-下拉输入" class="headerlink" title="上拉/下拉输入"></a>上拉/下拉输入</h3>
+      <p>&#8195;&#8195;与浮空输入类似，但设置了上拉或者下拉电阻，当无输入时，引脚电平取决于下拉或者下拉设置，以明确空闲时的 IO 电平状态。</p>
+
+        <h3 id="模拟输入"   >
+          <a href="#模拟输入" class="heading-link"><i class="fas fa-link"></i></a><a href="#模拟输入" class="headerlink" title="模拟输入"></a>模拟输入</h3>
+      <p>&#8195;&#8195;引脚路径不经过施密特触发器而是直接送到 ADC 外设中，这样保留最原始的电压值，不是转换过后的0和1信号。</p>
+
+        <h3 id="模拟输出"   >
+          <a href="#模拟输出" class="heading-link"><i class="fas fa-link"></i></a><a href="#模拟输出" class="headerlink" title="模拟输出"></a>模拟输出</h3>
+      <p>&#8195;&#8195;DAC 外设建立的电压直接反馈到外部引脚。</p>
+
+        <h3 id="推挽输出"   >
+          <a href="#推挽输出" class="heading-link"><i class="fas fa-link"></i></a><a href="#推挽输出" class="headerlink" title="推挽输出"></a>推挽输出</h3>
+      <p>&#8195;&#8195;输出寄存器写入1或者0，如果写入1，P-mos导通，N-mos截止，IO口等价直接连接在VDD上，所以IO口电平是高电平。同理输出寄存器的值为0时，P-mos截止，N-mos导通。IO口直接连接在VSS上，所有IO口电平为低电平。推挽输出可以快速的切换0和1。</p>
+
+        <h3 id="开漏输出"   >
+          <a href="#开漏输出" class="heading-link"><i class="fas fa-link"></i></a><a href="#开漏输出" class="headerlink" title="开漏输出"></a>开漏输出</h3>
+      <p>&#8195;&#8195;开漏输出与推挽输出唯一的区别就是开漏输出只有一个N-mos管。当输出寄存器的值为0的时候，n-mos导通，IO口直接连接VSS，输出为低电平。当输出寄存器为1的时候，n-mos截止，IO口直接和输出端断开了，处于浮空状态。电平状态不可控制。作为输出的时候一定要加上拉电阻，加上上拉电阻后，输入寄存器为1的时候，n-mos截止截止了，好比IO和输出端断开，这是IO口点压就等于上拉电阻的电压。这样变输出了高电平，如果IO口的高电平，连接到了外设低电平的，就会产生电流，电流不会流到IO口，（N-mos管截止了）直接流到外设。是不是增大了驱动能力了。（IO口的驱动能力有限，不能容忍大电流）。</p>
+
+        <h3 id="复用I-O"   >
+          <a href="#复用I-O" class="heading-link"><i class="fas fa-link"></i></a><a href="#复用I-O" class="headerlink" title="复用I/O"></a>复用I/O</h3>
+      <p>&#8195;&#8195;复用I/O区别在于起点不一样，复用输出来源片上外设，同样根据外设通信信号设置为推挽或者开漏。</p>
+
+        <h2 id="GPIO-电气特性"   >
+          <a href="#GPIO-电气特性" class="heading-link"><i class="fas fa-link"></i></a><a href="#GPIO-电气特性" class="headerlink" title="GPIO 电气特性"></a>GPIO 电气特性</h2>
+      
+        <h2 id="GPIO-程序控制"   >
+          <a href="#GPIO-程序控制" class="heading-link"><i class="fas fa-link"></i></a><a href="#GPIO-程序控制" class="headerlink" title="GPIO 程序控制"></a>GPIO 程序控制</h2>
+      
+        <h3 id="读-修改-写问题"   >
+          <a href="#读-修改-写问题" class="heading-link"><i class="fas fa-link"></i></a><a href="#读-修改-写问题" class="headerlink" title="读-修改-写问题"></a>读-修改-写问题</h3>
+      <p>&#8195;&#8195;此问题出现在51单片机控制GPIO需要注意的，单片机从端口读入数据的通道有两个，一个是从锁存器引入，一个是从输出引脚处引入，分别叫做“读锁存器”和“读引脚”。单片机在进行端口输出时，经常要参考其上一次的输出状态，例如，需要将连接到端口的LED闪烁。编程序时往往需要从输出引脚读前一次的输出状态，将其求反后输出。但如果上次是输出“1”使LED点亮，这时候虽然端口上输出逻辑是“1”，但是由于LED的二极管作用将输出高电平拉至“0”电平（0.7V左右），通过引脚读进来就是“0”而非“1”了。这样，将“0”求反后输出还是“1”，就起不到使灯闪烁的目的了。但是，如果这时读的不是端口而是锁存器的输出端Q，则实现闪烁的功能就正常。上述例子很好地说明了为什么单片机在设置读端口功能后还要设置读锁存器这一功能。</p>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/05/13/mcu_soc/soc-mcu-mpu-cpu-sip/">如何理解soc/mcu/mpu/cpu/sip/模组</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-13</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-08-04</span></span></div></header><div class="post-body"><div class="post-excerpt">
+        <h2 id="CPU-central-processing-unit"   >
+          <a href="#CPU-central-processing-unit" class="heading-link"><i class="fas fa-link"></i></a><a href="#CPU-central-processing-unit" class="headerlink" title="CPU (central processing unit)"></a>CPU (central processing unit)</h2>
+      <p>&#8195;&#8195;中央处理器，对于CPU这个名词可以代指很多概念，如硬件线程、内核、多核处理器单元、电路板上的处理器器件等。需要根据具体问题来阐述CPU这个概念的理解。</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.zhihu.com/question/321291471/answer/660183713" >如何理解处理器、CPU、多处理器、内核、多核</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h2 id="MCU-Microcontroller-Unit"   >
+          <a href="#MCU-Microcontroller-Unit" class="heading-link"><i class="fas fa-link"></i></a><a href="#MCU-Microcontroller-Unit" class="headerlink" title="MCU (Microcontroller Unit)"></a>MCU (Microcontroller Unit)</h2>
+      <p>&#8195;&#8195;微控制器，也是常说的单片机，其是一般用来完成相关硬件控制任务的简单的计算机系统，将硬件实现比较复杂的状态机流程转换为代码控制的方式。微控制器一般用于如工业控制、家电控制面板等，一般不需要强大的计算处理能力，目前大部分应用下8位机都足矣。</p>
+<p>典型的单片系统包括以下组成成分：</p>
+<ul>
+<li>包含一个或者多个微处理器</li>
+<li>存储器</li>
+<li>提供时钟信号的震荡源和锁相环电路</li>
+<li>外部通信接口</li>
+<li>若干功能模块</li>
+<li>电源调理电路以及稳压器</li>
+</ul>
+
+        <h2 id="MPU-Microprocessor-Unit"   >
+          <a href="#MPU-Microprocessor-Unit" class="heading-link"><i class="fas fa-link"></i></a><a href="#MPU-Microprocessor-Unit" class="headerlink" title="MPU (Microprocessor Unit)"></a>MPU (Microprocessor Unit)</h2>
+      <p>&#8195;&#8195;微处理器，同样，一般场合也是称他为单片机，在MCU的基础上采用了处理性能更为强大的处理核心、也增加了丰富的外设。目前主流的单片机都是32位，如Cortex-M内核等。一般MPU都可以运行</p>
+<p>&#8195;&#8195;下图为主流单片机的架构示意：</p>
+<p><img   src="https://pic1.zhimg.com/80/v2-8455f8e91235e6769f30658640245c9d_720w.jpg?source=1940ef5c" style=""  alt="img"></p>
+
+        <h2 id="SOC-System-on-a-Chip"   >
+          <a href="#SOC-System-on-a-Chip" class="heading-link"><i class="fas fa-link"></i></a><a href="#SOC-System-on-a-Chip" class="headerlink" title="SOC (System on a Chip)"></a>SOC (System on a Chip)</h2>
+      <p>&#8195;&#8195;一般认知的“单片系统”这个术语常被用来指功能更加强大的处理器，目前狭义的SOC与一般单片机的界限在于是否搭载了MMU以及可以运行Windows和Linux的某些版本。单片系统更强的功能要求它具备外部存储芯片，例如有的单片系统配备了闪存。单片系统往往可以连接额外的外部设备。单片系统对半导体器件的集成规模提出了更高的要求。为了更好地执行更复杂的任务，一些单片系统采用了多个处理器核心。<br>&#8195;&#8195;另外，除了运行操作系统，针对专用的领域还集成了专用的IP核，如用于手机设备的SOC一般集成了基带。而用于机顶盒、图像处理等应用的SOC则需要集成图像处理引擎等。</p>
+
+        <h2 id="SiP-System-in-Package"   >
+          <a href="#SiP-System-in-Package" class="heading-link"><i class="fas fa-link"></i></a><a href="#SiP-System-in-Package" class="headerlink" title="SiP (System in Package)"></a>SiP (System in Package)</h2>
+      <p>&#8195;&#8195;<strong>系统级封装</strong>（System in Package, SiP）为一种集成电路封装的概念，是将一个系统或子系统的全部或大部分电子功能配置在集成型衬底内，而芯片以2D、3D的方式接合到集成型衬底的封装方式。SIP不仅可以组装多个芯片，还可以作为一个专门的处理器、DRAM、闪存与被动组件结合电阻器和电容器、连接器、天线等，全部安装在同一衬底上上。这意味着，一个完整的功能单位可以建在一个多芯片封装，因此，需要添加少量的外部组件，使其工作。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-fd0a6a9408546032d9a1b29d241d08b5_720w.jpg" alt="img"></p>
+<p><img src="https://pic4.zhimg.com/80/v2-855849912d26890e48799209fd9a962b_720w.jpg" alt="img"></p>
+<p><img src="https://pic3.zhimg.com/80/v2-2ac1239e5b1824db5b997d959b6bf232_720w.jpg" alt="img"></p>
+
+        <h2 id="模组"   >
+          <a href="#模组" class="heading-link"><i class="fas fa-link"></i></a><a href="#模组" class="headerlink" title="模组"></a>模组</h2>
+      <p>&#8195;&#8195;模组已经超出集成电路的范围，不再是在硅片衬底上集成。而是在电路板上集成，整体打包后作为一个解决方案，给目标客户使用。</p>
+<p><img   src="https://pic1.zhimg.com/80/v2-d6a0a4c1f452595978293ce34817555d_720w.jpg?source=1940ef5c" style=""  alt="img"></p>
+
+        <h2 id="总结"   >
+          <a href="#总结" class="heading-link"><i class="fas fa-link"></i></a><a href="#总结" class="headerlink" title="总结"></a>总结</h2>
+      <p>&#8195;&#8195;以上几种可以属于计算机系统的范围，其主要是根据集成的复杂度、计算处理能力等因素对其的划分。计算机系统集成不仅限于硅片衬底、也可以是板级的，我们不必太多注重怎么定义，因为其都是一种系统集成复杂度的描述。</p>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/05/11/fpga-introduction/">fpga_introduction</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-11</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-05-13</span></span></div></header><div class="post-body"><div class="post-excerpt"><p>#FPGA介绍</p>
+
+        <h2 id="可编程逻辑器件是什么"   >
+          <a href="#可编程逻辑器件是什么" class="heading-link"><i class="fas fa-link"></i></a><a href="#可编程逻辑器件是什么" class="headerlink" title="可编程逻辑器件是什么"></a>可编程逻辑器件是什么</h2>
+      <p>&#8195;&#8195;在集成数字电路芯片中，除了电路逻辑固化的芯片, 还有一种可编程逻辑器件(PLD), 允许出厂后对其数字逻辑进行变更。早期的 PLD 发展出了 PAL （可编程阵列逻辑），但 PAL 只能写入一次逻辑配置，后来出现可重复烧录的 GAL (通用数组逻辑)。如今可编程器件发展主要分为 CPLD 和 FPGA 两种类别。一颗CPLD内等于包含了数颗的PAL，各PAL（逻辑区块）间的互接连线也可以进行程序性的规划、刻录，CPLD运用这种多合一（All-In-One）的集成作法，使其一颗就能实现数千个逻辑门，甚至数十万个逻辑门才能构成的电路。各厂商CPLD芯片多具有焊接后再行传输、再次刻录的技术，但各家的技术实现方式与名称多不尽相同。FPGA运用一种逻辑门式的网格（Grid），这种网格与普通的“闸数组”相类似，网格可以在FPGA芯片出厂后才进行配置配置的程序性规划。FPGA通常也可以在焊接后再进行程序刻录、变更的工作，此在某种程度与大型的CPLD相似。而绝大多数的FPGA，其内部的程序配置配置是属于易失性的，即是无持续电力供应后逻辑配置的内容就会消失，所以在设备重新获得电力后，就必须将配置配置内容重新加载（re-load）到FPGA中，或者期望改变FPGA内的逻辑配置时，也必须进行重新加载的动作。</p>
+
+        <h3 id="CPLD-与-FPGA-的区别"   >
+          <a href="#CPLD-与-FPGA-的区别" class="heading-link"><i class="fas fa-link"></i></a><a href="#CPLD-与-FPGA-的区别" class="headerlink" title="CPLD 与 FPGA 的区别"></a>CPLD 与 FPGA 的区别</h3>
+      <ul>
+<li>CPLD更适合完成各种算法和组合逻辑，FPGA更适合于完成时序逻辑。换句话说，FPGA更适合于触发器丰富的结构，而CPLD更适合于触发器有限而乘积项丰富的结构。</li>
+<li>CPLD的连续式布线结构决定了它的时序延迟是均匀的和可预测的，而FPGA的分段式布线结构决定了其延迟的不可预测性</li>
+<li>在编程上FPGA比CPLD具有更大的灵活性。CPLD通过修改具有固定内连电路的逻辑功能来编程，FPGA主要通过改变内部连线的布线来编程；FPGA可在逻辑门下编程，而CPLD是在逻辑块下编程，粗粒与细粒。</li>
+<li>FPGA的集成度比CPLD高，具有更复杂的布线结构和逻辑实现</li>
+<li>CPLD比FPGA使用起来更方便。CPLD的编程采用E2PROM或FASTFLASH技术，无需外部存储器芯片，使用简单。而FPGA的编程信息需存放在外部存储器上，使用方法复杂</li>
+<li>CPLD的速度比FPGA快，并且具有较大的时间可预测性。这是由于FPGA是门级编程，并且CLB之间采用分布式互联，而CPLD是逻辑块级编程，并且其逻辑块之间的互联是集总式的。</li>
+<li>在编程方式上，CPLD主要是基于E2PROM或FLASH存储器编程，编程次数可达1万次，优点是系统断电时编程信息也不丢失。CPLD又可分为在编程器上编程和在系统编程两类。FPGA大部分是基于SRAM编程，编程信息在系统断电时丢失，每次上电时，需从器件外部将编程数据重新写入SRAM中。其优点是可以编程任意次，可在工作中快速编程，从而实现板级和系统级的动态配置。</li>
+<li>CPLD保密性好，FPGA保密性差</li>
+<li>一般情况下，CPLD的功耗要比FPGA大，且集成度越高越明显</li>
+</ul>
+
+        <h3 id="专用集成电路"   >
+          <a href="#专用集成电路" class="heading-link"><i class="fas fa-link"></i></a><a href="#专用集成电路" class="headerlink" title="专用集成电路"></a>专用集成电路</h3>
+      <p>&#8195;&#8195;特殊应用集成电路是由特定使用者要求和特定电子系统的需要而设计、制造。由于单个专用集成电路芯片的生产成本很高，如果出货量较小，则采用专用集成电路在经济上不太实惠。这种情况可以使用可编程逻辑器件（如现场可编程逻辑门阵列）来作为目标硬件实现集成电路设计。此外，可编程逻辑器件具有用户可编程特性，因此适合于大规模芯片量产之前的原型机，来进行调试等工作。但是可编程逻辑器件在面积、速度方面的优化程度不如全定制的集成电路。</p>
+
+        <h2 id="FPGA-的特性"   >
+          <a href="#FPGA-的特性" class="heading-link"><i class="fas fa-link"></i></a><a href="#FPGA-的特性" class="headerlink" title="FPGA 的特性"></a>FPGA 的特性</h2>
+      <p>&#8195;&#8195;现场可编程门阵列 (field programmable gate array) ，简称 FPGA。FPGA一般来说比专用集成电路（ASIC）的速度要慢，无法完成更复杂的设计，并且会消耗更多的电能。但是，FPGA具有很多优点，比如可以快速成品，而且其内部逻辑可以被设计者反复修改，从而改正程序中的错误，此外，使用FPGA进行调试的成本较低。厂商也可能会提供便宜、但是编辑能力有限的FPGA产品。因为这些芯片有的可编辑能力较差，所以这些设计的开发是在普通的FPGA上完成的，然后将设计转移到一个类似于专用集成电路的芯片上。在一些技术更新比较快的行业，FPGA几乎是电子系统中的必要部件，因为在大批量供货前，必须迅速抢占市场，这时FPGA方便灵活的优势就显得很重要。</p>
+
+        <h2 id="FPGA-的组成部分"   >
+          <a href="#FPGA-的组成部分" class="heading-link"><i class="fas fa-link"></i></a><a href="#FPGA-的组成部分" class="headerlink" title="FPGA 的组成部分"></a>FPGA 的组成部分</h2>
+      <ul>
+<li><p>可编程逻辑块 (Configurable Logic Block, CLB)</p>
+<p>  CLB是FPGA内部实现可编程逻辑的主要成分, 具体可参考[UltraScale Architecture  Configurable Logic Block](<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.xilinx.com/support/documentation/user_guides/ug574-ultrascale-clb.pdf" >UltraScale Architecture Configurable Logic Block User Guide (UG574) (xilinx.com)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>)。</p>
+</li>
+<li><p>Block Memory</p>
+</li>
+<li><p>物理 I/O</p>
+</li>
+<li><p>附件组件</p>
+</li>
+</ul>
+
+        <h2 id="FPGA-与-CPU-DSP-GPU-比较"   >
+          <a href="#FPGA-与-CPU-DSP-GPU-比较" class="heading-link"><i class="fas fa-link"></i></a><a href="#FPGA-与-CPU-DSP-GPU-比较" class="headerlink" title="FPGA 与 CPU/DSP/GPU 比较"></a>FPGA 与 CPU/DSP/GPU 比较</h2>
+      <p>&#8195;&#8195;在硬件层面，DSP/CPU/GPU都是是ASIC，适宜于量产降低成本，缺点是（硬件）设计一旦确定，便不易于修改。处理架构固定。</p>
+<p>&#8195;&#8195;与CPU等架构相比，构成FPGA架构的结构可在应用程序执行中实现高度并行性，也可以设计成特定的 CPU 架构验证平台。处理器（CPU）和FPGA之间的关键区别之一就是处理架构是否固定。CPU架构中应用程序执行只能适应流水线结构的处理流程，而在 FPGA 中，其相当于一个白板，可以根据实际需要设计成最适应的处理架构。但一般 FPGA 模拟对应的 CPU 等架构当然没有反复验证设计的专用 CPU ASIC 性能那么好。</p>
+
+        <h2 id="EDA-的-FPGA-设计流程"   >
+          <a href="#EDA-的-FPGA-设计流程" class="heading-link"><i class="fas fa-link"></i></a><a href="#EDA-的-FPGA-设计流程" class="headerlink" title="EDA 的 FPGA 设计流程"></a>EDA 的 FPGA 设计流程</h2>
+      
+        <h3 id="1-设计输入"   >
+          <a href="#1-设计输入" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-设计输入" class="headerlink" title="1.设计输入"></a>1.设计输入</h3>
+      <p>​    分为原理图输入、HDL 文本输入以及波形输入等方式。</p>
+
+        <h3 id="2-综合"   >
+          <a href="#2-综合" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-综合" class="headerlink" title="2.综合"></a>2.综合</h3>
+      <p>&#8195;&#8195;综合，就是针对给定的电路实现功能和实现此电路的约束条件，如速度、功耗、成本及电路类型等，通过计算机进行优化处理，获得一个能满足上述要求的电路设计方案。也就是是说，被综合的文件是HDL文件（或相应文件等），综合的依据是逻辑设计的描述和各种约束条件，综合的结果则是一个硬件电路的实现方案，该方案必须同时满足预期的功能和约束条件。对于综合来说，满足要求的方案可能有多个，综合器将产生一个最优的或接近最优的结果。因此，综合的过程也就是设计目标的优化过程，最后获得的结构与综合器的工作性能有关。</p>
+<p>&#8195;&#8195;综合生成输出文件称为网表，网表中除了包含从HDL语言中infer（推断）出的与门、非门等组合逻辑和寄存器等时序逻辑之外，还包含FPGA特有的各种原语(Primitive)比如LUT，BRAM，DSP48（Xilinx），甚至PowerPC（Xilinx），PCIe等硬核模块，以及这些模块的属性和约束信息。网表的业界标准是EDIF格式。文件后缀通常为.edn, .edf, .edif。</p>
+
+        <h3 id="3-适配"   >
+          <a href="#3-适配" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-适配" class="headerlink" title="3.适配"></a>3.适配</h3>
+      <p>&#8195;&#8195;适配的适配对象直接与器件的结构相对应。逻辑综合通过后必须利用适配器将综合后网表文件针对某一具体的目标器件进行逻辑映射操作，其中包括底层器件配置、逻辑分割、逻辑优化、逻辑布局布线操作。适配完成后可以利用适配所产生的仿真文件作精确的时序仿真，同时产生可应用于编程的文件。</p>
+
+        <h3 id="4-时序仿真与功能仿真"   >
+          <a href="#4-时序仿真与功能仿真" class="heading-link"><i class="fas fa-link"></i></a><a href="#4-时序仿真与功能仿真" class="headerlink" title="4.时序仿真与功能仿真"></a>4.时序仿真与功能仿真</h3>
+      <p>&#8195;&#8195;通常情况下，先进行功能仿真，因此功能仿真又称为前仿真，它直接对原理图描述或其他描述形式的逻辑功能进行测试模拟，验证其实现的功能是否满足原设计的要求，仿真的过程不涉及任何具体形式的硬件特性，不经历综合和适配。在功能仿真已经完成，确认设计文件表达的功能满足要求后，再进行综合适配和时序仿真。时序仿真是在选择了具体器件并且完成布局布线之后进行的时序关系仿真，因此又称为时延仿真或后仿真。</p>
+
+        <h3 id="5-编程下载"   >
+          <a href="#5-编程下载" class="heading-link"><i class="fas fa-link"></i></a><a href="#5-编程下载" class="headerlink" title="5.编程下载"></a>5.编程下载</h3>
+      <p>&#8195;&#8195;将设计处理中产生的编程数据下载到具体的可编程器件中。如果之前的步骤都满足设计的要求，就可以将适配器产生的配置或下载文件通过CPLD/FPGA编程器或下载电缆载入目标芯片CPLD或FPGA中。</p>
+
+        <h3 id="6-硬件测试"   >
+          <a href="#6-硬件测试" class="heading-link"><i class="fas fa-link"></i></a><a href="#6-硬件测试" class="headerlink" title="6.硬件测试"></a>6.硬件测试</h3>
+      <p>&#8195;&#8195;将含有载入了设计的FPGA或CPLD的硬件系统进行统一测试，便于在真实的环境中检验设计效果。</p>
+
+        <h2 id="FPGA-设计一些术语"   >
+          <a href="#FPGA-设计一些术语" class="heading-link"><i class="fas fa-link"></i></a><a href="#FPGA-设计一些术语" class="headerlink" title="FPGA 设计一些术语"></a>FPGA 设计一些术语</h2>
+      
+        <h3 id="BlackBox"   >
+          <a href="#BlackBox" class="heading-link"><i class="fas fa-link"></i></a><a href="#BlackBox" class="headerlink" title="BlackBox"></a>BlackBox</h3>
+      <p>&#8195;&#8195;一个大的设计中可以用到一系列网表文件作为输入的一部分而并不全部使用HDL文件。当综合这个大设计时综合器不需要知道这个网表文件是怎样实现的，而只需要知道它的输入输出接口就可以了。这样的网表就称为黑盒子，因为我们不需要看到它的内部情况。通常付费IP都会以BlackBox的形式。</p>
+<p>&#8195;&#8195;每个BlackBox网表都需要有一个与之相对应的HDL文件来注明它的端口。这个HDL只说明BlackBox的端口信息，而不提供具体实现信息。这个只提供端口信息的HDL文件称为Wrapper。Wrapper的名字通常需要与BlackBox网表的名字相同</p>
+
+        <h3 id="IP-核"   >
+          <a href="#IP-核" class="heading-link"><i class="fas fa-link"></i></a><a href="#IP-核" class="headerlink" title="IP 核"></a>IP 核</h3>
+      <p>&#8195;&#8195;IP (Intellligent Property) 核是具有知识产权的集成电路芯核总称。是经过反复验证具有特定功能的逻辑宏模块，与芯片制造工艺无关，可以移植到不同的半导体工艺中。IP 核设计已经成为 ASIC 电路设计公司和 FPGA 供应商的重要任务，也是其实力的体现。目前，IP 核已经成为系统设计的基本单元，并作为独立设计成果被交换、转让以及销售。</p>
+<p>&#8195;&#8195;从 IP 核的提供方式上，通常分为软核、硬核以及固核三类。</p>
+
+        <h4 id="软核-Soft-IP-Core"   >
+          <a href="#软核-Soft-IP-Core" class="heading-link"><i class="fas fa-link"></i></a><a href="#软核-Soft-IP-Core" class="headerlink" title="软核 (Soft IP Core)"></a>软核 (Soft IP Core)</h4>
+      <p>&#8195;&#8195;软核指的是综合之前的寄存器传输级模型 (RTL)。具体在 FPGA 设计中指的是对逻辑电路的硬件语言描述，包括逻辑描述、网表和帮助文档等。其优点在于灵活性高、可移植性强，允许用户自配置。缺点是在后续设计中存在发生错误的风险。软核是应用最广泛的方式。</p>
+
+        <h4 id="固核-Firm-IP-Core"   >
+          <a href="#固核-Firm-IP-Core" class="heading-link"><i class="fas fa-link"></i></a><a href="#固核-Firm-IP-Core" class="headerlink" title="固核 (Firm IP Core)"></a>固核 (Firm IP Core)</h4>
+      <p>&#8195;&#8195;固核指的是带有平面规划信息的网表。在 FPGA 设计中可以看成带有布局规划的软核，通常以 RTL 代码以及对应具体工艺网表的混合形式提供。和软核相比其灵活性稍差但可靠性有较大提高。</p>
+
+        <h4 id="硬核-Hard-IP-Core"   >
+          <a href="#硬核-Hard-IP-Core" class="heading-link"><i class="fas fa-link"></i></a><a href="#硬核-Hard-IP-Core" class="headerlink" title="硬核 (Hard IP Core)"></a>硬核 (Hard IP Core)</h4>
+      <p>&#8195;&#8195;硬核指的是经过验证的设计版图。具体在 FPGA 设计中指的是布局和工艺固定、经过前后端验证的设计，开发人员不能对其修改。因此适用范围较窄。</p>
+
+        <h3 id="Soc-FPGA"   >
+          <a href="#Soc-FPGA" class="heading-link"><i class="fas fa-link"></i></a><a href="#Soc-FPGA" class="headerlink" title="Soc FPGA"></a>Soc FPGA</h3>
+      <p>&#8195;&#8195;SoC FPGA为一个整合FPGA架构逻辑资源、硬式核心CPU子系统以及其他硬式核心IP的半导体元件，可实现低延时频宽互联，并提高IP重用性；为系统设计人员提供更多的选择。</p>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/05/10/mcu_soc/mcu-interrupt/">mcu_interrupt</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-10</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-05-23</span></span></div></header><div class="post-body"><div class="post-excerpt">
+        <h1 id="MCU架构——中断"   >
+          <a href="#MCU架构——中断" class="heading-link"><i class="fas fa-link"></i></a><a href="#MCU架构——中断" class="headerlink" title="MCU架构——中断"></a>MCU架构——中断</h1>
+      <p>&#8195;&#8195;何为中断，就是指处理器接收到来自硬件或者软件的信号，提示发生了某个事件，应该被注意并作出处理。</p>
+<p>&#8195;&#8195;通常，在接收到来自外围硬件（相对于中央处理器和内存）的异步信号，或来自软件的同步信号之后，处理器将会进行相应的硬件／软件处理。发出这样的信号称为进行中断请求（interrupt request，IRQ）。硬件中断导致处理器通过一个运行信息切换（context switch）来保存执行状态（以程序计数器和程序状态字等寄存器信息为主）；软件中断则通常作为CPU指令集中的一个指令，以可编程的方式直接指示这种运行信息切换，并将处理导向一段中断处理代码。中断在计算机多任务处理，尤其是即时系统中尤为有用。这样的系统，包括运行于其上的操作系统，也被称为“中断驱动的”（interrupt-driven）。</p>
+<p>&#8195;&#8195;能够发出中断请求信号的来源统称为<strong>中断源</strong>，CPU跳转执行中断事件处理的逻辑代码程序称为<strong>中断服务程序</strong>。</p>
+<p>&#8195;&#8195;中断系统不单单是响应外部IO的中断，还响应内部的中断请求如定时器、看门狗等。</p>
+
+        <h2 id="中断触发类型"   >
+          <a href="#中断触发类型" class="heading-link"><i class="fas fa-link"></i></a><a href="#中断触发类型" class="headerlink" title="中断触发类型"></a>中断触发类型</h2>
+      <ul>
+<li><p>电平状态触发</p>
+<p>  以等待特定的电平以触发中断。当请求中断时，驱动中断请求线路至特定电平，中断将在在CPU发出强制停止命令或更高优先级中断事件之前始终保持。电平状态触发允许多个设备共享一个中断线路，如低电平触发，在中断线路添加上拉电阻以保证中断请求撤销后及时复位。其缺点是当没有撤销中断电平，则系统一直响应中断则影响其正常运行。</p>
+</li>
+<li><p>边沿触发</p>
+<p>  设备通过向中断线路发送一个脉冲来表示其中断请求。脉冲可以为上升沿或下降沿或者双边沿。在发送完脉冲后设备立即释放中断线路。如果这个脉冲太短，以至于I/O轮询不足以确保知悉其存在，则有必要使用专门的硬件设备来辅助对边沿触发的探查。边沿触发中断容易丢失，特别是当中断被有意屏蔽时。在不引入锁存器的情况下，在屏蔽时段发送的中断信号不可能被恢复。在早期的计算机系统中因为中断丢失而导致处理不能继续的情况时有发生。现代中断硬件多包含有一个或一组中断状态锁存器，用以暂存一逝而过的中断请求。在对边沿触发中断硬件进行编程时，应检查这些中断状态寄存器以确保请求事件不会丢失。</p>
+</li>
+<li><p>混合模式</p>
+<p>  使用状态触发与边沿触发兼顾的混合中断模式。其硬件不但探测脉冲，也验证中断信号是否保持一段时间。</p>
+</li>
+<li><p>消息信号</p>
+<p>  中断消息的识别基于特定的比特码序列而不是物理线路上的单个信号，可以有效地通过设定不同的中断比特码来划分和处理不同类型的中断。另外，使用串行或并行总线都可以传递中断消息。</p>
+</li>
+</ul>
+
+        <h2 id="中断类型"   >
+          <a href="#中断类型" class="heading-link"><i class="fas fa-link"></i></a><a href="#中断类型" class="headerlink" title="中断类型"></a>中断类型</h2>
+      <ul>
+<li><p>可屏蔽中断 (maskable interrupt)</p>
+<p>  硬件中断的一类，可通过在中断屏蔽寄存器中设定位掩码来关闭</p>
+</li>
+<li><p>不可屏蔽中断 (NMI)</p>
+<p>  硬件中断的一类，无法通过在中断屏蔽寄存器中设定位掩码来关闭</p>
+</li>
+<li><p>处理器中断</p>
+<p>  一种特殊的硬件中断。由处理器发出，被其它处理器接收。仅见于多处理器系统，以便于处理器间通信或同步</p>
+</li>
+<li><p>软件中断</p>
+<p>  一条CPU指令，用以自陷一个中断。由于软中断指令通常要运行一个切换CPU至内核态（Kernel Mode/Ring 0）的子例程，它常被用作实现系统调用（System call）</p>
+</li>
+</ul>
+
+        <h2 id="中断处理"   >
+          <a href="#中断处理" class="heading-link"><i class="fas fa-link"></i></a><a href="#中断处理" class="headerlink" title="中断处理"></a>中断处理</h2>
+      <p>&#8195;&#8195;系统响应中断必须通过硬件自动方式或者软件方式保存进入中断前的状态，如保存内核寄存器状态保存。MCU 系统响应中断一般自动保存上下文信息并跳转到该中断对应的地址上运行代码。所有中断跳转地址空间一般是线性分布的，称之为<strong>中断向量表</strong> ，中断向量表每个中断只有极小的地址空间，不足以存放用户的中断处理程序，一般通过跳转到对应的中断事件函数执行，返回后由硬件自动恢复上下文信息以继续按照原有正常程序执行。注意，在中断处理事件中是否影响程序正常需根据实际情况断定。</p>
+<p>&#8195;&#8195;中断事件处理程序应该精简以尽快返回</p>
+
+        <h2 id="中断优先级"   >
+          <a href="#中断优先级" class="heading-link"><i class="fas fa-link"></i></a><a href="#中断优先级" class="headerlink" title="中断优先级"></a>中断优先级</h2>
+      <p>&#8195;&#8195;中断系统中，CPU一般根据各中断请求的轻重缓急分别处理，即给每个中断源确定一个中断优先级别，系统自动对它们进行排队判优，保证首先处理优先级别高的中断请求，待级别高的中断请求处理完毕后，再响应级别较低的中断请求。对多个中断源进行识别和优先级排队的日的就是要确定出最高级别的中断源，并形成该中断源的中断服务程序入口地址，以便CPU将控制转移到该中断服务程序去。一般数字越小，优先级越高。</p>
+<p>&#8195;&#8195;当系统在处理中断的同时，有更高优先级的中断触发，系统则保存当前中断上下位而转向处理更高优先级中断然后回来继续处理低优先级中断。这种逻辑叫<strong>中断嵌套</strong>。有些 MCU 不支持中断嵌套或者不允许中断当前中断处理，则可以通过禁用全局中断方式处理。</p>
+<p>&#8195;&#8195;中断响应原则：</p>
+<ul>
+<li>优先响应高优先级中断</li>
+<li>优先级相同，则根据次序响应</li>
+<li>正在进行的中断过程不能被新的同级或低优先级的中断请求所中断；</li>
+<li>正在进行的低优先级中断过程，能被高优先级中断请求所中断</li>
+</ul>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/04/29/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/">通信协议基础知识</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-04-29</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-05-19</span></span></div></header><div class="post-body"><div class="post-excerpt">介绍硬件通信协议基础概念知识</div><div class="post-readmore"><a class="post-readmore__link" href="/2021/04/29/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/"><span class="post-readmore__text">阅读全文</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/04/27/open-source-license/">开源许可证 &amp; 知识共享许可协议</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-04-27</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-05-09</span></span></div></header><div class="post-body"><div class="post-excerpt">介绍开源许可证的作用，以及根据开源许可证使用开源项目</div><div class="post-readmore"><a class="post-readmore__link" href="/2021/04/27/open-source-license/"><span class="post-readmore__text">阅读全文</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article></section><nav class="paginator"><div class="paginator-inner"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-right"></i></a></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/images/author_image.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/LiangJinlongFX" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://twitter.com/Jinlong15071708" target="_blank" rel="noopener" data-popover="Twitter" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-twitter"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">12</div><div class="sidebar-ov-state-item__name">归档</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jinlong</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>

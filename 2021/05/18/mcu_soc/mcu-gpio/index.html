@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/assets/facicon/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/assets/facicon/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="&amp;#8195;&amp;#8195;GPIO，即通用输入输出端口，是 MCU 必不可少的外设之一，通俗来说，就是 MCU 可以被程序控制的管脚。通过程序控制 GPIO 从而读写引脚上的电平状态。GPIO 不仅用于控制引脚电平，还可以复用为一些通信端口的信号引脚。                     GPIO 电路结构       &amp;#8195;&amp;#8195;下图描述了 STM32F1xx 的 GPIO">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mcu_io_type">
+<meta property="og:url" content="https://liangjinlongfx.github.io/2021/05/18/mcu_soc/mcu-gpio/index.html">
+<meta property="og:site_name" content="Jinlong&#39;s Blog">
+<meta property="og:description" content="&amp;#8195;&amp;#8195;GPIO，即通用输入输出端口，是 MCU 必不可少的外设之一，通俗来说，就是 MCU 可以被程序控制的管脚。通过程序控制 GPIO 从而读写引脚上的电平状态。GPIO 不仅用于控制引脚电平，还可以复用为一些通信端口的信号引脚。                     GPIO 电路结构       &amp;#8195;&amp;#8195;下图描述了 STM32F1xx 的 GPIO">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://liangjinlongfx.github.io/STM32F1xxGPIO%E7%94%B5%E8%B7%AF.png">
+<meta property="article:published_time" content="2021-05-18T14:16:23.000Z">
+<meta property="article:modified_time" content="2021-05-18T16:02:45.575Z">
+<meta property="article:author" content="Jinlong">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://liangjinlongfx.github.io/STM32F1xxGPIO%E7%94%B5%E8%B7%AF.png"><title>mcu_io_type | Jinlong's Blog</title><link ref="canonical" href="https://liangjinlongfx.github.io/2021/05/18/mcu_soc/mcu-gpio/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Jinlong's Blog</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">mcu_io_type</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-18</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-05-19</span></span></div></header><div class="post-body"><p>&#8195;&#8195;GPIO，即通用输入输出端口，是 MCU 必不可少的外设之一，通俗来说，就是 MCU 可以被程序控制的管脚。通过程序控制 GPIO 从而读写引脚上的电平状态。GPIO 不仅用于控制引脚电平，还可以复用为一些通信端口的信号引脚。</p>
+
+        <h2 id="GPIO-电路结构"   >
+          <a href="#GPIO-电路结构" class="heading-link"><i class="fas fa-link"></i></a><a href="#GPIO-电路结构" class="headerlink" title="GPIO 电路结构"></a>GPIO 电路结构</h2>
+      <p>&#8195;&#8195;下图描述了 STM32F1xx 的 GPIO 内部电路结构，大部分 MCU 的 GPIO 电路结构与此大同小异，部分特殊 IO 结构有所出入。</p>
+<p>​    <img src="/STM32F1xxGPIO%E7%94%B5%E8%B7%AF.png" alt="image-20210518231435748"></p>
+<p>&#8195;&#8195;从右往左看，外部引脚进来有一个上下保护二极管，用于避免应电流倒灌等异常造成内部电路损坏。接着为设置通断的上下拉电阻，具体阻值参考芯片 datasheet。内部分为输入以及输出两大部分，输入输出电路电平处于线与的逻辑，因此在设置输出的电平状态也会反馈到输入部分。输入部分，输入状态寄存器通过一个触发器获取电平数值，部分MCU也可能是直接获取当前引脚电平状态的</p>
+
+        <h2 id="GPIO-模式"   >
+          <a href="#GPIO-模式" class="heading-link"><i class="fas fa-link"></i></a><a href="#GPIO-模式" class="headerlink" title="GPIO 模式"></a>GPIO 模式</h2>
+      <p>&#8195;&#8195;为适应不同的控制\通信电路，GPIO 通常可配置为多种 I/O 电路模式。</p>
+
+        <h3 id="浮空输入"   >
+          <a href="#浮空输入" class="heading-link"><i class="fas fa-link"></i></a><a href="#浮空输入" class="headerlink" title="浮空输入"></a>浮空输入</h3>
+      <p>&#8195;&#8195;引脚电平通过施密特触发器后直接保存在输入寄存器里面。输出控制保持断开高阻状态。外部输入时0读出的就是0，外部输入时1读出的就是1，外部没有输入IO处于阻塞读不出电平状态。在读取一段一段的波形，可以清晰的知道什么时候是0信号，什么时候是1信号，什么时候是没有信号的。</p>
+
+        <h3 id="上拉-下拉输入"   >
+          <a href="#上拉-下拉输入" class="heading-link"><i class="fas fa-link"></i></a><a href="#上拉-下拉输入" class="headerlink" title="上拉/下拉输入"></a>上拉/下拉输入</h3>
+      <p>&#8195;&#8195;与浮空输入类似，但设置了上拉或者下拉电阻，当无输入时，引脚电平取决于下拉或者下拉设置，以明确空闲时的 IO 电平状态。</p>
+
+        <h3 id="模拟输入"   >
+          <a href="#模拟输入" class="heading-link"><i class="fas fa-link"></i></a><a href="#模拟输入" class="headerlink" title="模拟输入"></a>模拟输入</h3>
+      <p>&#8195;&#8195;引脚路径不经过施密特触发器而是直接送到 ADC 外设中，这样保留最原始的电压值，不是转换过后的0和1信号。</p>
+
+        <h3 id="模拟输出"   >
+          <a href="#模拟输出" class="heading-link"><i class="fas fa-link"></i></a><a href="#模拟输出" class="headerlink" title="模拟输出"></a>模拟输出</h3>
+      <p>&#8195;&#8195;DAC 外设建立的电压直接反馈到外部引脚。</p>
+
+        <h3 id="推挽输出"   >
+          <a href="#推挽输出" class="heading-link"><i class="fas fa-link"></i></a><a href="#推挽输出" class="headerlink" title="推挽输出"></a>推挽输出</h3>
+      <p>&#8195;&#8195;输出寄存器写入1或者0，如果写入1，P-mos导通，N-mos截止，IO口等价直接连接在VDD上，所以IO口电平是高电平。同理输出寄存器的值为0时，P-mos截止，N-mos导通。IO口直接连接在VSS上，所有IO口电平为低电平。推挽输出可以快速的切换0和1。</p>
+
+        <h3 id="开漏输出"   >
+          <a href="#开漏输出" class="heading-link"><i class="fas fa-link"></i></a><a href="#开漏输出" class="headerlink" title="开漏输出"></a>开漏输出</h3>
+      <p>&#8195;&#8195;开漏输出与推挽输出唯一的区别就是开漏输出只有一个N-mos管。当输出寄存器的值为0的时候，n-mos导通，IO口直接连接VSS，输出为低电平。当输出寄存器为1的时候，n-mos截止，IO口直接和输出端断开了，处于浮空状态。电平状态不可控制。作为输出的时候一定要加上拉电阻，加上上拉电阻后，输入寄存器为1的时候，n-mos截止截止了，好比IO和输出端断开，这是IO口点压就等于上拉电阻的电压。这样变输出了高电平，如果IO口的高电平，连接到了外设低电平的，就会产生电流，电流不会流到IO口，（N-mos管截止了）直接流到外设。是不是增大了驱动能力了。（IO口的驱动能力有限，不能容忍大电流）。</p>
+
+        <h3 id="复用I-O"   >
+          <a href="#复用I-O" class="heading-link"><i class="fas fa-link"></i></a><a href="#复用I-O" class="headerlink" title="复用I/O"></a>复用I/O</h3>
+      <p>&#8195;&#8195;复用I/O区别在于起点不一样，复用输出来源片上外设，同样根据外设通信信号设置为推挽或者开漏。</p>
+
+        <h2 id="GPIO-电气特性"   >
+          <a href="#GPIO-电气特性" class="heading-link"><i class="fas fa-link"></i></a><a href="#GPIO-电气特性" class="headerlink" title="GPIO 电气特性"></a>GPIO 电气特性</h2>
+      
+        <h2 id="GPIO-程序控制"   >
+          <a href="#GPIO-程序控制" class="heading-link"><i class="fas fa-link"></i></a><a href="#GPIO-程序控制" class="headerlink" title="GPIO 程序控制"></a>GPIO 程序控制</h2>
+      
+        <h3 id="读-修改-写问题"   >
+          <a href="#读-修改-写问题" class="heading-link"><i class="fas fa-link"></i></a><a href="#读-修改-写问题" class="headerlink" title="读-修改-写问题"></a>读-修改-写问题</h3>
+      <p>&#8195;&#8195;此问题出现在51单片机控制GPIO需要注意的，单片机从端口读入数据的通道有两个，一个是从锁存器引入，一个是从输出引脚处引入，分别叫做“读锁存器”和“读引脚”。单片机在进行端口输出时，经常要参考其上一次的输出状态，例如，需要将连接到端口的LED闪烁。编程序时往往需要从输出引脚读前一次的输出状态，将其求反后输出。但如果上次是输出“1”使LED点亮，这时候虽然端口上输出逻辑是“1”，但是由于LED的二极管作用将输出高电平拉至“0”电平（0.7V左右），通过引脚读进来就是“0”而非“1”了。这样，将“0”求反后输出还是“1”，就起不到使灯闪烁的目的了。但是，如果这时读的不是端口而是锁存器的输出端Q，则实现闪烁的功能就正常。上述例子很好地说明了为什么单片机在设置读端口功能后还要设置读锁存器这一功能。</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://liangjinlongfx.github.io">Jinlong</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://liangjinlongfx.github.io/2021/05/18/mcu_soc/mcu-gpio/">https://liangjinlongfx.github.io/2021/05/18/mcu_soc/mcu-gpio/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/05/21/mcu_soc/mcu-comm-ports/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">mcu-comm-ports</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/05/13/mcu_soc/soc-mcu-mpu-cpu-sip/"><span class="paginator-prev__text">如何理解soc/mcu/mpu/cpu/sip/模组</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#GPIO-%E7%94%B5%E8%B7%AF%E7%BB%93%E6%9E%84"><span class="toc-text">
+          GPIO 电路结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GPIO-%E6%A8%A1%E5%BC%8F"><span class="toc-text">
+          GPIO 模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%AE%E7%A9%BA%E8%BE%93%E5%85%A5"><span class="toc-text">
+          浮空输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8A%E6%8B%89-%E4%B8%8B%E6%8B%89%E8%BE%93%E5%85%A5"><span class="toc-text">
+          上拉&#x2F;下拉输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E8%BE%93%E5%85%A5"><span class="toc-text">
+          模拟输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E8%BE%93%E5%87%BA"><span class="toc-text">
+          模拟输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E6%8C%BD%E8%BE%93%E5%87%BA"><span class="toc-text">
+          推挽输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E6%BC%8F%E8%BE%93%E5%87%BA"><span class="toc-text">
+          开漏输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E7%94%A8I-O"><span class="toc-text">
+          复用I&#x2F;O</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GPIO-%E7%94%B5%E6%B0%94%E7%89%B9%E6%80%A7"><span class="toc-text">
+          GPIO 电气特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GPIO-%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6"><span class="toc-text">
+          GPIO 程序控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB-%E4%BF%AE%E6%94%B9-%E5%86%99%E9%97%AE%E9%A2%98"><span class="toc-text">
+          读-修改-写问题</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/images/author_image.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/LiangJinlongFX" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://twitter.com/Jinlong15071708" target="_blank" rel="noopener" data-popover="Twitter" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-twitter"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">12</div><div class="sidebar-ov-state-item__name">归档</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jinlong</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
