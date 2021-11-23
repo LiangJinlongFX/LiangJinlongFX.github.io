@@ -1,14 +1,17 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/assets/facicon/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/assets/facicon/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="电源管理 PWR                           电源输入引脚                           SOC 外部为什么有多组 VDD&#x2F;VSS       &amp;#8195;&amp;#8195;原因主要有以下几点：  芯片内部有很多功能单元，这些单元都需要供电，采用多引脚供电可以就近获取电源，无需在内部穿越。  不同单元之间，有时不希">
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/assets/facicon/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/assets/facicon/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="电源管理                           电源引脚                           SOC 外部为什么有多组 VDD&#x2F;VSS       &amp;#8195;&amp;#8195;原因主要有以下几点：  芯片内部有很多功能单元，这些单元都需要供电，采用多引脚供电可以就近获取电源，无需在内部穿越。  存在多个电源域，不同单元之间，有时">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mcu-pwr-rcc">
+<meta property="og:title" content="电源、时钟、复位管理">
 <meta property="og:url" content="https://liangjinlongfx.github.io/2021/05/24/mcu_soc/mcu-pwr-rcc/index.html">
 <meta property="og:site_name" content="Jinlong&#39;s Blog">
-<meta property="og:description" content="电源管理 PWR                           电源输入引脚                           SOC 外部为什么有多组 VDD&#x2F;VSS       &amp;#8195;&amp;#8195;原因主要有以下几点：  芯片内部有很多功能单元，这些单元都需要供电，采用多引脚供电可以就近获取电源，无需在内部穿越。  不同单元之间，有时不希">
+<meta property="og:description" content="电源管理                           电源引脚                           SOC 外部为什么有多组 VDD&#x2F;VSS       &amp;#8195;&amp;#8195;原因主要有以下几点：  芯片内部有很多功能单元，这些单元都需要供电，采用多引脚供电可以就近获取电源，无需在内部穿越。  存在多个电源域，不同单元之间，有时">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdn.net/20180406104641136">
 <meta property="article:published_time" content="2021-05-24T14:06:50.000Z">
-<meta property="article:modified_time" content="2021-06-23T15:15:17.189Z">
+<meta property="article:modified_time" content="2021-08-06T13:47:19.963Z">
 <meta property="article:author" content="Jinlong">
-<meta name="twitter:card" content="summary"><title>mcu-pwr-rcc | Jinlong's Blog</title><link ref="canonical" href="https://liangjinlongfx.github.io/2021/05/24/mcu_soc/mcu-pwr-rcc/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+<meta property="article:tag" content="MCU">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20180406104641136"><title>电源、时钟、复位管理 | Jinlong's Blog</title><link ref="canonical" href="https://liangjinlongfx.github.io/2021/05/24/mcu_soc/mcu-pwr-rcc/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
 var CONFIG = {
   root: '/',
   algolia: undefined,
@@ -32,20 +35,20 @@ var CONFIG = {
   sourcePath: {"js":"js","css":"css","images":"images"},
 };
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Jinlong's Blog</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">mcu-pwr-rcc</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-24</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-23</span></span></div></header><div class="post-body">
-        <h1 id="电源管理-PWR"   >
-          <a href="#电源管理-PWR" class="heading-link"><i class="fas fa-link"></i></a><a href="#电源管理-PWR" class="headerlink" title="电源管理 PWR"></a>电源管理 PWR</h1>
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Jinlong's Blog</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">电源、时钟、复位管理</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-24</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-08-06</span></span></div></header><div class="post-body">
+        <h2 id="电源管理"   >
+          <a href="#电源管理" class="heading-link"><i class="fas fa-link"></i></a><a href="#电源管理" class="headerlink" title="电源管理"></a>电源管理</h2>
       
-        <h2 id="电源输入引脚"   >
-          <a href="#电源输入引脚" class="heading-link"><i class="fas fa-link"></i></a><a href="#电源输入引脚" class="headerlink" title="电源输入引脚"></a>电源输入引脚</h2>
+        <h3 id="电源引脚"   >
+          <a href="#电源引脚" class="heading-link"><i class="fas fa-link"></i></a><a href="#电源引脚" class="headerlink" title="电源引脚"></a>电源引脚</h3>
       
-        <h3 id="SOC-外部为什么有多组-VDD-VSS"   >
-          <a href="#SOC-外部为什么有多组-VDD-VSS" class="heading-link"><i class="fas fa-link"></i></a><a href="#SOC-外部为什么有多组-VDD-VSS" class="headerlink" title="SOC 外部为什么有多组 VDD/VSS"></a>SOC 外部为什么有多组 VDD/VSS</h3>
+        <h4 id="SOC-外部为什么有多组-VDD-VSS"   >
+          <a href="#SOC-外部为什么有多组-VDD-VSS" class="heading-link"><i class="fas fa-link"></i></a><a href="#SOC-外部为什么有多组-VDD-VSS" class="headerlink" title="SOC 外部为什么有多组 VDD/VSS"></a>SOC 外部为什么有多组 VDD/VSS</h4>
       <p>&#8195;&#8195;原因主要有以下几点：</p>
 <ol>
 <li><p>芯片内部有很多功能单元，这些单元都需要供电，采用多引脚供电可以就近获取电源，无需在内部穿越。</p>
 </li>
-<li><p>不同单元之间，有时不希望电源互相影响，采用独立的电源引脚，可以避免这种影响。所以，<strong>多组VDD之间可能不连通</strong></p>
+<li><p>存在多个电源域，不同单元之间，有时不希望电源互相影响，采用独立的电源引脚，可以避免这种影响。所以，<strong>多组VDD之间可能不连通</strong></p>
 </li>
 <li><p>实际使用时，每个引脚不但要连接电源，还应在电源引脚附近加上退藕电容。其目的是当器件工作时，电流的变化会引起电源的电压微小波动，加上退藕电容后，这种波动就不容易传递到另外的电源引脚。</p>
 <p> 在电路设计中对供电引脚需要考虑几点：</p>
@@ -56,21 +59,23 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
 <li>每对VDD与VSS都必须在尽可能靠近芯片处放置滤波电容</li>
 </ul>
 
-        <h3 id="VDD-VDDA-VDDIO"   >
-          <a href="#VDD-VDDA-VDDIO" class="heading-link"><i class="fas fa-link"></i></a><a href="#VDD-VDDA-VDDIO" class="headerlink" title="VDD / VDDA /VDDIO"></a>VDD / VDDA /VDDIO</h3>
+        <h4 id="VDD-VDDA-VDDIO"   >
+          <a href="#VDD-VDDA-VDDIO" class="heading-link"><i class="fas fa-link"></i></a><a href="#VDD-VDDA-VDDIO" class="headerlink" title="VDD / VDDA /VDDIO"></a>VDD / VDDA /VDDIO</h4>
       <p>&#8195;&#8195;VDD 表示主电源、VDDA 为模拟部分供电电源，而 VDDIO 则是 GPIO 供电电源。一些芯片将这三类电源分别用单独电源引脚引出，但其一般共用一个电源，电源之间压差有具体要求，具体参考 datasheet，也有芯片直接整合为一种类型的 VDD 引脚。</p>
 
-        <h3 id="内部-LDO"   >
-          <a href="#内部-LDO" class="heading-link"><i class="fas fa-link"></i></a><a href="#内部-LDO" class="headerlink" title="内部 LDO"></a>内部 LDO</h3>
-      <p>&#8195;&#8195;一些专用芯片如车用芯片，内置高压 LDO，可用于只有单一高压电源的系统，因此不需要为其生成额外的电源，以减少外部电源器件使用以及提高稳定性，内部 LDO 可能需要外接 R/C 等辅助器件。当然除了使用内置高压 LDO，可允许用户使用正常的 VDD.</p>
+        <h4 id="内部-LDO"   >
+          <a href="#内部-LDO" class="heading-link"><i class="fas fa-link"></i></a><a href="#内部-LDO" class="headerlink" title="内部 LDO"></a>内部 LDO</h4>
+      <p>&#8195;&#8195;一些专用芯片如车用芯片，内置高压 LDO，可用于只有单一高压电源的系统，因此不需要为其生成额外的电源，以减少外部电源器件使用以及提高稳定性，内部 LDO 可能需要外接 R/C 等辅助器件。当然除了使用内置高压 LDO，也可允许用户使用正常的 VDD.</p>
 <p>&#8195;&#8195;一些低功耗芯片也有内置低电压的 LDO，以满足特殊需求。</p>
 
-        <h2 id="电源域"   >
-          <a href="#电源域" class="heading-link"><i class="fas fa-link"></i></a><a href="#电源域" class="headerlink" title="电源域"></a>电源域</h2>
-      <p>&#8195;&#8195;为满足 SOC 不同工作模式的功耗要求，通常将内部电源控制划分不同的区域，以根据实际需求细分电源供应区域。如外设，允许通过配置寄存器方式开闭相应外设的电源</p>
+        <h3 id="电源域"   >
+          <a href="#电源域" class="heading-link"><i class="fas fa-link"></i></a><a href="#电源域" class="headerlink" title="电源域"></a>电源域</h3>
+      <p>&#8195;&#8195;为满足 SOC 不同工作模式的功耗等要求，通常将内部电源控制划分不同的区域，以根据实际需求细分电源供应区域。不同电源域之间电压不一定相同，同时支持根据实际功耗要求允许通过配置寄存器方式开闭相应外设的电源。</p>
+<p>&#8195;&#8195;下图展示stm32f0x电源电源域</p>
+<p><img src="https://img-blog.csdn.net/20180406104641136" alt="img"></p>
 
-        <h2 id="电源监视器"   >
-          <a href="#电源监视器" class="heading-link"><i class="fas fa-link"></i></a><a href="#电源监视器" class="headerlink" title="电源监视器"></a>电源监视器</h2>
+        <h3 id="电源监视器"   >
+          <a href="#电源监视器" class="heading-link"><i class="fas fa-link"></i></a><a href="#电源监视器" class="headerlink" title="电源监视器"></a>电源监视器</h3>
       <p>&#8195;&#8195;电源监视器当检测到器件供电电压发生变化时产生复位等动作，常见的有：</p>
 <ul>
 <li><p>上电复位 (POR) 和 掉电复位 (PDR)</p>
@@ -84,15 +89,15 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
 </li>
 </ul>
 
-        <h1 id="时钟配置"   >
-          <a href="#时钟配置" class="heading-link"><i class="fas fa-link"></i></a><a href="#时钟配置" class="headerlink" title="时钟配置"></a>时钟配置</h1>
+        <h2 id="时钟配置"   >
+          <a href="#时钟配置" class="heading-link"><i class="fas fa-link"></i></a><a href="#时钟配置" class="headerlink" title="时钟配置"></a>时钟配置</h2>
       
-        <h2 id="时钟源"   >
-          <a href="#时钟源" class="heading-link"><i class="fas fa-link"></i></a><a href="#时钟源" class="headerlink" title="时钟源"></a>时钟源</h2>
+        <h3 id="时钟源"   >
+          <a href="#时钟源" class="heading-link"><i class="fas fa-link"></i></a><a href="#时钟源" class="headerlink" title="时钟源"></a>时钟源</h3>
       <p>&#8195;&#8195;一般 MCU 时钟源分为内部以及外部两大类型，同时根据时钟快慢又细分为高速时钟以及低速时钟两类，即 HSE、LSE、HSI、LSI. 还有一些用于特定外设的固定时钟源。外部高速时钟一般为 MHz 单位为主要的时钟源，而外部低速时钟一般为 32.768 kHz，用于 RTC、WDT 等提供时钟源。外部时钟一般为无源晶振或者时钟信号输入，而内部时钟源一般为 RC 振荡器，其震荡频率精度不高且频率较低。具体器件应查看 datasheet 确定其时钟源有哪些</p>
 
-        <h2 id="时钟树"   >
-          <a href="#时钟树" class="heading-link"><i class="fas fa-link"></i></a><a href="#时钟树" class="headerlink" title="时钟树"></a>时钟树</h2>
+        <h3 id="时钟树"   >
+          <a href="#时钟树" class="heading-link"><i class="fas fa-link"></i></a><a href="#时钟树" class="headerlink" title="时钟树"></a>时钟树</h3>
       <p>&#8195;&#8195;时钟源出来的时钟并不直接时钟，一般需要经过分频以及倍频的处理以分别提供给内核、总线、外设等组件。时钟配置一般以树状结构方式以可视化配置，一般 MCU 内部存在多个 PLL 以及 分频器以配置合适的时钟，一般时钟类型分为：</p>
 <ul>
 <li>系统核心时钟</li>
@@ -102,15 +107,15 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
 
         <h2 id="复位管理"   >
           <a href="#复位管理" class="heading-link"><i class="fas fa-link"></i></a><a href="#复位管理" class="headerlink" title="复位管理"></a>复位管理</h2>
-      </div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://liangjinlongfx.github.io">Jinlong</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://liangjinlongfx.github.io/2021/05/24/mcu_soc/mcu-pwr-rcc/">https://liangjinlongfx.github.io/2021/05/24/mcu_soc/mcu-pwr-rcc/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/06/03/mcu_soc/mcu-sdk/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">mcu-bsp</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/05/23/mcu_soc/mcu-dma/"><span class="paginator-prev__text">mcu-dma</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86-PWR"><span class="toc-text">
-          电源管理 PWR</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E6%BA%90%E8%BE%93%E5%85%A5%E5%BC%95%E8%84%9A"><span class="toc-text">
-          电源输入引脚</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SOC-%E5%A4%96%E9%83%A8%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%89%E5%A4%9A%E7%BB%84-VDD-VSS"><span class="toc-text">
-          SOC 外部为什么有多组 VDD&#x2F;VSS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VDD-VDDA-VDDIO"><span class="toc-text">
-          VDD &#x2F; VDDA &#x2F;VDDIO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E9%83%A8-LDO"><span class="toc-text">
-          内部 LDO</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E6%BA%90%E5%9F%9F"><span class="toc-text">
-          电源域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E6%BA%90%E7%9B%91%E8%A7%86%E5%99%A8"><span class="toc-text">
-          电源监视器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%B6%E9%92%9F%E9%85%8D%E7%BD%AE"><span class="toc-text">
-          时钟配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%92%9F%E6%BA%90"><span class="toc-text">
-          时钟源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%92%9F%E6%A0%91"><span class="toc-text">
-          时钟树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E4%BD%8D%E7%AE%A1%E7%90%86"><span class="toc-text">
-          复位管理</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/images/author_image.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/LiangJinlongFX" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://twitter.com/Jinlong15071708" target="_blank" rel="noopener" data-popover="Twitter" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-twitter"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">12</div><div class="sidebar-ov-state-item__name">归档</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jinlong</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
+      </div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://liangjinlongfx.github.io">Jinlong</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://liangjinlongfx.github.io/2021/05/24/mcu_soc/mcu-pwr-rcc/">https://liangjinlongfx.github.io/2021/05/24/mcu_soc/mcu-pwr-rcc/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://liangjinlongfx.github.io/tags/MCU/">MCU</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/06/03/mcu_soc/mcu-sdk/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">BSP、SDK是什么</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/05/23/mcu_soc/mcu-dma/"><span class="paginator-prev__text">mcu-dma</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86"><span class="toc-text">
+          电源管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B5%E6%BA%90%E5%BC%95%E8%84%9A"><span class="toc-text">
+          电源引脚</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SOC-%E5%A4%96%E9%83%A8%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%89%E5%A4%9A%E7%BB%84-VDD-VSS"><span class="toc-text">
+          SOC 外部为什么有多组 VDD&#x2F;VSS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#VDD-VDDA-VDDIO"><span class="toc-text">
+          VDD &#x2F; VDDA &#x2F;VDDIO</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E9%83%A8-LDO"><span class="toc-text">
+          内部 LDO</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B5%E6%BA%90%E5%9F%9F"><span class="toc-text">
+          电源域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B5%E6%BA%90%E7%9B%91%E8%A7%86%E5%99%A8"><span class="toc-text">
+          电源监视器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%92%9F%E9%85%8D%E7%BD%AE"><span class="toc-text">
+          时钟配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%92%9F%E6%BA%90"><span class="toc-text">
+          时钟源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%92%9F%E6%A0%91"><span class="toc-text">
+          时钟树</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E4%BD%8D%E7%AE%A1%E7%90%86"><span class="toc-text">
+          复位管理</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/images/author_image.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/LiangJinlongFX" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://twitter.com/Jinlong15071708" target="_blank" rel="noopener" data-popover="Twitter" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-twitter"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">12</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">1</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">2</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jinlong</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>

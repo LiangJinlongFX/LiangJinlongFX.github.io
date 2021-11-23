@@ -28,16 +28,18 @@ var CONFIG = {
   sourcePath: {"js":"js","css":"css","images":"images"},
 };
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Jinlong's Blog</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/06/03/mcu_soc/mcu-sdk/">mcu-bsp</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-06-03</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-03</span></span></div></header><div class="post-body"><div class="post-excerpt">
-        <h1 id="SDK-BSP"   >
-          <a href="#SDK-BSP" class="heading-link"><i class="fas fa-link"></i></a><a href="#SDK-BSP" class="headerlink" title="SDK/BSP"></a>SDK/BSP</h1>
-      
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Jinlong's Blog</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/06/03/mcu_soc/mcu-sdk/">BSP、SDK是什么</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-06-03</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-08-06</span></span></div></header><div class="post-body"><div class="post-excerpt">
+        <h2 id="BSP"   >
+          <a href="#BSP" class="heading-link"><i class="fas fa-link"></i></a><a href="#BSP" class="headerlink" title="BSP"></a>BSP</h2>
+      <p>&#8195;&#8195;BSP 即 <em>Board Support Package</em>，板级支持包。它来源于嵌入式操作系统与硬件无关的设计思想，操作系统被设计为运行在虚拟的硬件平台上。对于具体的硬件平台，与硬件相关的代码都被封装在<em>BSP</em>中，由 BSP 向上提供虚拟的硬件平台，<em>BSP</em>与操作系统通过定义好的接口进行交互。BSP 是所有与硬件相关的代码体的集合。一个成熟的商用操作系统，其被广泛应用的必要条件之一就是能够支持众多的硬件平台，并实现应用程序的硬件无关性。一般来说，这种无关性都是由操作系统实现的。但对于嵌入式系统来说，它没有像 PC 机那样具有广泛使用的各种工业标准、统一的硬件结构。各种嵌入式系统各不同的应用需求就决定了它一般都选用各自定制的硬件环境，每种嵌入式系统从核心的处理器到外部芯片在硬件结构上都有很大的不同。这种诸多变化的硬件环境就决定了无法完全由操作系统来实现上层软件与底层硬件之间的无关性。因此各种商用实时操作系统，都采用了分层设计的方法，它将系统中与硬件直接相关的一层软件独立出来，称之为 Board Support Package，简称为 BSP。顾名思义，<em>BSP</em>是针对某个特定的单板而设计的。如果没有单板支持软件包，则操作系统就不能在单板上运行。并且它对于用户（指开发者）也是开放的，用户可以根据不同的硬件需求对其作改动或二次开发。</p>
+<p>&#8195;&#8195;对于运行 Linux 系统的 SOC，SOC 厂商都会提供基于 SOC 评估板以用于 uboot 以及 linux 内核的 BSP。而对于 MCU 运行 RTOS. 更多的是需要开发者根据 MCU 开发包基于实际硬件情况去开发自己的 BSP。</p>
+
         <h2 id="SDK"   >
           <a href="#SDK" class="heading-link"><i class="fas fa-link"></i></a><a href="#SDK" class="headerlink" title="SDK"></a>SDK</h2>
       <p>&#8195;&#8195;芯片制造商针对 MCU 的软件开发一般会提供一些源码以及工具等资源的开发包。注意该 SDK 定义仅是针对于 MCU 嵌入式软件开发领域的定义</p>
 
-        <h3 id="MCU开发包内容"   >
-          <a href="#MCU开发包内容" class="heading-link"><i class="fas fa-link"></i></a><a href="#MCU开发包内容" class="headerlink" title="MCU开发包内容"></a>MCU开发包内容</h3>
+        <h3 id="MCU开发包SDK内容"   >
+          <a href="#MCU开发包SDK内容" class="heading-link"><i class="fas fa-link"></i></a><a href="#MCU开发包SDK内容" class="headerlink" title="MCU开发包SDK内容"></a>MCU开发包SDK内容</h3>
       
         <h4 id="芯片内核相关源码"   >
           <a href="#芯片内核相关源码" class="heading-link"><i class="fas fa-link"></i></a><a href="#芯片内核相关源码" class="headerlink" title="芯片内核相关源码"></a>芯片内核相关源码</h4>
@@ -98,28 +100,20 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
 <li><p>ARM-GCC</p>
 </li>
 </ul>
-
-        <h4 id="相关的配置工具"   >
-          <a href="#相关的配置工具" class="heading-link"><i class="fas fa-link"></i></a><a href="#相关的配置工具" class="headerlink" title="相关的配置工具"></a>相关的配置工具</h4>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/05/24/mcu_soc/mcu-pwr-rcc/">电源、时钟、复位管理</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-24</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-08-06</span></span></div></header><div class="post-body"><div class="post-excerpt">
+        <h2 id="电源管理"   >
+          <a href="#电源管理" class="heading-link"><i class="fas fa-link"></i></a><a href="#电源管理" class="headerlink" title="电源管理"></a>电源管理</h2>
       
-        <h2 id="BSP"   >
-          <a href="#BSP" class="heading-link"><i class="fas fa-link"></i></a><a href="#BSP" class="headerlink" title="BSP"></a>BSP</h2>
-      <p>&#8195;&#8195;BSP 即 <em>Board Support Package</em>，板级支持包。它来源于嵌入式操作系统与硬件无关的设计思想，操作系统被设计为运行在虚拟的硬件平台上。对于具体的硬件平台，与硬件相关的代码都被封装在<em>BSP</em>中，由 BSP 向上提供虚拟的硬件平台，<em>BSP</em>与操作系统通过定义好的接口进行交互。BSP 是所有与硬件相关的代码体的集合。一个成熟的商用操作系统，其被广泛应用的必要条件之一就是能够支持众多的硬件平台，并实现应用程序的硬件无关性。一般来说，这种无关性都是由操作系统实现的。但对于嵌入式系统来说，它没有像 PC 机那样具有广泛使用的各种工业标准、统一的硬件结构。各种嵌入式系统各不同的应用需求就决定了它一般都选用各自定制的硬件环境，每种嵌入式系统从核心的处理器到外部芯片在硬件结构上都有很大的不同。这种诸多变化的硬件环境就决定了无法完全由操作系统来实现上层软件与底层硬件之间的无关性。因此各种商用实时操作系统，都采用了分层设计的方法，它将系统中与硬件直接相关的一层软件独立出来，称之为 Board Support Package，简称为 BSP。顾名思义，<em>BSP</em>是针对某个特定的单板而设计的。如果没有单板支持软件包，则操作系统就不能在单板上运行。并且它对于用户（指开发者）也是开放的，用户可以根据不同的硬件需求对其作改动或二次开发。</p>
-<p>​    对于运行 Linux 系统的 SOC，SOC 厂商都会提供基于 SOC 评估板以用于 uboot 以及 linux 内核的 BSP。而对于 MCU 运行 RTOS. 更多的是需要开发者根据 MCU 开发包基于实际硬件情况去开发自己的 BSP。</p>
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/05/24/mcu_soc/mcu-pwr-rcc/">mcu-pwr-rcc</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-24</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-23</span></span></div></header><div class="post-body"><div class="post-excerpt">
-        <h1 id="电源管理-PWR"   >
-          <a href="#电源管理-PWR" class="heading-link"><i class="fas fa-link"></i></a><a href="#电源管理-PWR" class="headerlink" title="电源管理 PWR"></a>电源管理 PWR</h1>
+        <h3 id="电源引脚"   >
+          <a href="#电源引脚" class="heading-link"><i class="fas fa-link"></i></a><a href="#电源引脚" class="headerlink" title="电源引脚"></a>电源引脚</h3>
       
-        <h2 id="电源输入引脚"   >
-          <a href="#电源输入引脚" class="heading-link"><i class="fas fa-link"></i></a><a href="#电源输入引脚" class="headerlink" title="电源输入引脚"></a>电源输入引脚</h2>
-      
-        <h3 id="SOC-外部为什么有多组-VDD-VSS"   >
-          <a href="#SOC-外部为什么有多组-VDD-VSS" class="heading-link"><i class="fas fa-link"></i></a><a href="#SOC-外部为什么有多组-VDD-VSS" class="headerlink" title="SOC 外部为什么有多组 VDD/VSS"></a>SOC 外部为什么有多组 VDD/VSS</h3>
+        <h4 id="SOC-外部为什么有多组-VDD-VSS"   >
+          <a href="#SOC-外部为什么有多组-VDD-VSS" class="heading-link"><i class="fas fa-link"></i></a><a href="#SOC-外部为什么有多组-VDD-VSS" class="headerlink" title="SOC 外部为什么有多组 VDD/VSS"></a>SOC 外部为什么有多组 VDD/VSS</h4>
       <p>&#8195;&#8195;原因主要有以下几点：</p>
 <ol>
 <li><p>芯片内部有很多功能单元，这些单元都需要供电，采用多引脚供电可以就近获取电源，无需在内部穿越。</p>
 </li>
-<li><p>不同单元之间，有时不希望电源互相影响，采用独立的电源引脚，可以避免这种影响。所以，<strong>多组VDD之间可能不连通</strong></p>
+<li><p>存在多个电源域，不同单元之间，有时不希望电源互相影响，采用独立的电源引脚，可以避免这种影响。所以，<strong>多组VDD之间可能不连通</strong></p>
 </li>
 <li><p>实际使用时，每个引脚不但要连接电源，还应在电源引脚附近加上退藕电容。其目的是当器件工作时，电流的变化会引起电源的电压微小波动，加上退藕电容后，这种波动就不容易传递到另外的电源引脚。</p>
 <p> 在电路设计中对供电引脚需要考虑几点：</p>
@@ -130,21 +124,23 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
 <li>每对VDD与VSS都必须在尽可能靠近芯片处放置滤波电容</li>
 </ul>
 
-        <h3 id="VDD-VDDA-VDDIO"   >
-          <a href="#VDD-VDDA-VDDIO" class="heading-link"><i class="fas fa-link"></i></a><a href="#VDD-VDDA-VDDIO" class="headerlink" title="VDD / VDDA /VDDIO"></a>VDD / VDDA /VDDIO</h3>
+        <h4 id="VDD-VDDA-VDDIO"   >
+          <a href="#VDD-VDDA-VDDIO" class="heading-link"><i class="fas fa-link"></i></a><a href="#VDD-VDDA-VDDIO" class="headerlink" title="VDD / VDDA /VDDIO"></a>VDD / VDDA /VDDIO</h4>
       <p>&#8195;&#8195;VDD 表示主电源、VDDA 为模拟部分供电电源，而 VDDIO 则是 GPIO 供电电源。一些芯片将这三类电源分别用单独电源引脚引出，但其一般共用一个电源，电源之间压差有具体要求，具体参考 datasheet，也有芯片直接整合为一种类型的 VDD 引脚。</p>
 
-        <h3 id="内部-LDO"   >
-          <a href="#内部-LDO" class="heading-link"><i class="fas fa-link"></i></a><a href="#内部-LDO" class="headerlink" title="内部 LDO"></a>内部 LDO</h3>
-      <p>&#8195;&#8195;一些专用芯片如车用芯片，内置高压 LDO，可用于只有单一高压电源的系统，因此不需要为其生成额外的电源，以减少外部电源器件使用以及提高稳定性，内部 LDO 可能需要外接 R/C 等辅助器件。当然除了使用内置高压 LDO，可允许用户使用正常的 VDD.</p>
+        <h4 id="内部-LDO"   >
+          <a href="#内部-LDO" class="heading-link"><i class="fas fa-link"></i></a><a href="#内部-LDO" class="headerlink" title="内部 LDO"></a>内部 LDO</h4>
+      <p>&#8195;&#8195;一些专用芯片如车用芯片，内置高压 LDO，可用于只有单一高压电源的系统，因此不需要为其生成额外的电源，以减少外部电源器件使用以及提高稳定性，内部 LDO 可能需要外接 R/C 等辅助器件。当然除了使用内置高压 LDO，也可允许用户使用正常的 VDD.</p>
 <p>&#8195;&#8195;一些低功耗芯片也有内置低电压的 LDO，以满足特殊需求。</p>
 
-        <h2 id="电源域"   >
-          <a href="#电源域" class="heading-link"><i class="fas fa-link"></i></a><a href="#电源域" class="headerlink" title="电源域"></a>电源域</h2>
-      <p>&#8195;&#8195;为满足 SOC 不同工作模式的功耗要求，通常将内部电源控制划分不同的区域，以根据实际需求细分电源供应区域。如外设，允许通过配置寄存器方式开闭相应外设的电源</p>
+        <h3 id="电源域"   >
+          <a href="#电源域" class="heading-link"><i class="fas fa-link"></i></a><a href="#电源域" class="headerlink" title="电源域"></a>电源域</h3>
+      <p>&#8195;&#8195;为满足 SOC 不同工作模式的功耗等要求，通常将内部电源控制划分不同的区域，以根据实际需求细分电源供应区域。不同电源域之间电压不一定相同，同时支持根据实际功耗要求允许通过配置寄存器方式开闭相应外设的电源。</p>
+<p>&#8195;&#8195;下图展示stm32f0x电源电源域</p>
+<p><img src="https://img-blog.csdn.net/20180406104641136" alt="img"></p>
 
-        <h2 id="电源监视器"   >
-          <a href="#电源监视器" class="heading-link"><i class="fas fa-link"></i></a><a href="#电源监视器" class="headerlink" title="电源监视器"></a>电源监视器</h2>
+        <h3 id="电源监视器"   >
+          <a href="#电源监视器" class="heading-link"><i class="fas fa-link"></i></a><a href="#电源监视器" class="headerlink" title="电源监视器"></a>电源监视器</h3>
       <p>&#8195;&#8195;电源监视器当检测到器件供电电压发生变化时产生复位等动作，常见的有：</p>
 <ul>
 <li><p>上电复位 (POR) 和 掉电复位 (PDR)</p>
@@ -158,15 +154,15 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
 </li>
 </ul>
 
-        <h1 id="时钟配置"   >
-          <a href="#时钟配置" class="heading-link"><i class="fas fa-link"></i></a><a href="#时钟配置" class="headerlink" title="时钟配置"></a>时钟配置</h1>
+        <h2 id="时钟配置"   >
+          <a href="#时钟配置" class="heading-link"><i class="fas fa-link"></i></a><a href="#时钟配置" class="headerlink" title="时钟配置"></a>时钟配置</h2>
       
-        <h2 id="时钟源"   >
-          <a href="#时钟源" class="heading-link"><i class="fas fa-link"></i></a><a href="#时钟源" class="headerlink" title="时钟源"></a>时钟源</h2>
+        <h3 id="时钟源"   >
+          <a href="#时钟源" class="heading-link"><i class="fas fa-link"></i></a><a href="#时钟源" class="headerlink" title="时钟源"></a>时钟源</h3>
       <p>&#8195;&#8195;一般 MCU 时钟源分为内部以及外部两大类型，同时根据时钟快慢又细分为高速时钟以及低速时钟两类，即 HSE、LSE、HSI、LSI. 还有一些用于特定外设的固定时钟源。外部高速时钟一般为 MHz 单位为主要的时钟源，而外部低速时钟一般为 32.768 kHz，用于 RTC、WDT 等提供时钟源。外部时钟一般为无源晶振或者时钟信号输入，而内部时钟源一般为 RC 振荡器，其震荡频率精度不高且频率较低。具体器件应查看 datasheet 确定其时钟源有哪些</p>
 
-        <h2 id="时钟树"   >
-          <a href="#时钟树" class="heading-link"><i class="fas fa-link"></i></a><a href="#时钟树" class="headerlink" title="时钟树"></a>时钟树</h2>
+        <h3 id="时钟树"   >
+          <a href="#时钟树" class="heading-link"><i class="fas fa-link"></i></a><a href="#时钟树" class="headerlink" title="时钟树"></a>时钟树</h3>
       <p>&#8195;&#8195;时钟源出来的时钟并不直接时钟，一般需要经过分频以及倍频的处理以分别提供给内核、总线、外设等组件。时钟配置一般以树状结构方式以可视化配置，一般 MCU 内部存在多个 PLL 以及 分频器以配置合适的时钟，一般时钟类型分为：</p>
 <ul>
 <li>系统核心时钟</li>
@@ -176,7 +172,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
 
         <h2 id="复位管理"   >
           <a href="#复位管理" class="heading-link"><i class="fas fa-link"></i></a><a href="#复位管理" class="headerlink" title="复位管理"></a>复位管理</h2>
-      </div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/05/23/mcu_soc/mcu-dma/">mcu-dma</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-23</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-05-24</span></span></div></header><div class="post-body"><div class="post-excerpt">
+      </div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/05/23/mcu_soc/mcu-dma/">mcu-dma</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-23</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-08-06</span></span></div></header><div class="post-body"><div class="post-excerpt">
         <h1 id="MCU-DMA-控制器"   >
           <a href="#MCU-DMA-控制器" class="heading-link"><i class="fas fa-link"></i></a><a href="#MCU-DMA-控制器" class="headerlink" title="MCU DMA 控制器"></a>MCU DMA 控制器</h1>
       <p>&#8195;&#8195;DMA，全称Direct Memory Access，即直接存储器访问。DMA传输将数据从一个地址空间复制到另一个地址空间，提供在外设和存储器之间或者存储器和存储器之间的高速数据传输。当CPU初始化这个传输动作，传输动作本身是由DMA控制器来实现和完成的。DMA传输方式无需CPU直接控制传输，也没有中断处理方式那样保留现场和恢复现场过程，通过硬件为RAM和IO设备开辟一条直接传输数据的通道，使得CPU的效率大大提高。</p>
@@ -196,10 +192,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
 <li>独立的源和目标传输宽度（字节、半字、字）：源和目标的数据宽度不相等时，DMA 自动<br>  封装/解封必要的传输数据来优化带宽</li>
 <li></li>
 </ul>
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/05/21/mcu_soc/mcu-comm-ports/">mcu-comm-ports</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-21</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-01</span></span></div></header><div class="post-body"><div class="post-excerpt">
-        <h1 id="MCU-常见的通信接口"   >
-          <a href="#MCU-常见的通信接口" class="heading-link"><i class="fas fa-link"></i></a><a href="#MCU-常见的通信接口" class="headerlink" title="MCU 常见的通信接口"></a>MCU 常见的通信接口</h1>
-      
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/05/21/mcu_soc/mcu-comm-ports/">MCU常见的通信外设</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-21</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-08-06</span></span></div></header><div class="post-body"><div class="post-excerpt">
         <h2 id="IIC"   >
           <a href="#IIC" class="heading-link"><i class="fas fa-link"></i></a><a href="#IIC" class="headerlink" title="IIC"></a>IIC</h2>
       
@@ -243,13 +236,13 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
 <li>相关的状态标志以及中断事件</li>
 <li>DMA收发</li>
 </ul>
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/05/18/mcu_soc/mcu-gpio/">mcu_io_type</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-18</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-05-19</span></span></div></header><div class="post-body"><div class="post-excerpt"><p>&#8195;&#8195;GPIO，即通用输入输出端口，是 MCU 必不可少的外设之一，通俗来说，就是 MCU 可以被程序控制的管脚。通过程序控制 GPIO 从而读写引脚上的电平状态。GPIO 不仅用于控制引脚电平，还可以复用为一些通信端口的信号引脚。</p>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/05/18/mcu_soc/mcu-gpio/">GPIO</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-18</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-08-09</span></span></div></header><div class="post-body"><div class="post-excerpt"><p>&#8195;&#8195;GPIO，即通用输入输出端口，是 MCU 必不可少的外设之一，通俗来说，就是 MCU 可以被程序控制的管脚。通过程序控制 GPIO 从而读写引脚上的电平状态。GPIO 不仅用于控制引脚电平，还可以复用为一些通信端口的信号引脚。</p>
 
         <h2 id="GPIO-电路结构"   >
           <a href="#GPIO-电路结构" class="heading-link"><i class="fas fa-link"></i></a><a href="#GPIO-电路结构" class="headerlink" title="GPIO 电路结构"></a>GPIO 电路结构</h2>
       <p>&#8195;&#8195;下图描述了 STM32F1xx 的 GPIO 内部电路结构，大部分 MCU 的 GPIO 电路结构与此大同小异，部分特殊 IO 结构有所出入。</p>
 <p>​    <img src="/STM32F1xxGPIO%E7%94%B5%E8%B7%AF.png" alt="image-20210518231435748"></p>
-<p>&#8195;&#8195;从右往左看，外部引脚进来有一个上下保护二极管，用于避免应电流倒灌等异常造成内部电路损坏。接着为设置通断的上下拉电阻，具体阻值参考芯片 datasheet。内部分为输入以及输出两大部分，输入输出电路电平处于线与的逻辑，因此在设置输出的电平状态也会反馈到输入部分。输入部分，输入状态寄存器通过一个触发器获取电平数值，部分MCU也可能是直接获取当前引脚电平状态的</p>
+<p>&#8195;&#8195;从右往左看，外部引脚进来有一个上下保护二极管，用于避免应电流倒灌等异常造成内部电路损坏。接着为可设置通断的上下拉电阻，具体阻值参考芯片 datasheet。内部分为输入以及输出两大部分，输入输出电路电平处于线与的逻辑，因此在设置输出的电平状态也会反馈到输入部分。输入部分，输入状态寄存器通过一个触发器获取电平数值，部分MCU也可能是直接获取当前引脚电平状态的</p>
 
         <h2 id="GPIO-模式"   >
           <a href="#GPIO-模式" class="heading-link"><i class="fas fa-link"></i></a><a href="#GPIO-模式" class="headerlink" title="GPIO 模式"></a>GPIO 模式</h2>
@@ -281,18 +274,41 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
 
         <h3 id="复用I-O"   >
           <a href="#复用I-O" class="heading-link"><i class="fas fa-link"></i></a><a href="#复用I-O" class="headerlink" title="复用I/O"></a>复用I/O</h3>
-      <p>&#8195;&#8195;复用I/O区别在于起点不一样，复用输出来源片上外设，同样根据外设通信信号设置为推挽或者开漏。</p>
+      <p>&#8195;&#8195;复用I/O区别在于起点不一样，复用信号源来源片上外设，同样根据外设通信信号设置为推挽或者开漏。I/O在任一时候只能配置为GPIO或者复用外设中的一种。</p>
 
         <h2 id="GPIO-电气特性"   >
           <a href="#GPIO-电气特性" class="heading-link"><i class="fas fa-link"></i></a><a href="#GPIO-电气特性" class="headerlink" title="GPIO 电气特性"></a>GPIO 电气特性</h2>
       
+        <h3 id="输出速率问题"   >
+          <a href="#输出速率问题" class="heading-link"><i class="fas fa-link"></i></a><a href="#输出速率问题" class="headerlink" title="输出速率问题"></a>输出速率问题</h3>
+      <p>在STM32 GPIO应用中，会遇到GPIO输出速率设置问题，这里速度指的是输出驱动电路的响应速度，而不是输出信号的速度，输出信号翻转速度与程序有关，而这里的响应速度影响输入驱动电路的带宽，在高速的I/O翻转速度下应选择尽量大的带宽，即更快的响应速度。芯片内部在I/O口的输出部分安排了多个响应速度不同的输出驱动电路，用户可以根据自己的需要选择合适的驱动电路，通过选择速度来选择不同的输出驱动模块，达到最佳的噪声控制和降低功耗的目的。GPIO的引脚速度跟应用相匹配，速度配置越高，噪声越大，功耗越大。</p>
+
+        <h3 id="5V兼容IO"   >
+          <a href="#5V兼容IO" class="heading-link"><i class="fas fa-link"></i></a><a href="#5V兼容IO" class="headerlink" title="5V兼容IO"></a>5V兼容IO</h3>
+      <p>针对3.3供电的器件，部分引脚允许承受高电压的输入，对于输出，不能直接用于高电平的IO推挽驱动输出，但允许开漏输出</p>
+
         <h2 id="GPIO-程序控制"   >
           <a href="#GPIO-程序控制" class="heading-link"><i class="fas fa-link"></i></a><a href="#GPIO-程序控制" class="headerlink" title="GPIO 程序控制"></a>GPIO 程序控制</h2>
       
         <h3 id="读-修改-写问题"   >
           <a href="#读-修改-写问题" class="heading-link"><i class="fas fa-link"></i></a><a href="#读-修改-写问题" class="headerlink" title="读-修改-写问题"></a>读-修改-写问题</h3>
       <p>&#8195;&#8195;此问题出现在51单片机控制GPIO需要注意的，单片机从端口读入数据的通道有两个，一个是从锁存器引入，一个是从输出引脚处引入，分别叫做“读锁存器”和“读引脚”。单片机在进行端口输出时，经常要参考其上一次的输出状态，例如，需要将连接到端口的LED闪烁。编程序时往往需要从输出引脚读前一次的输出状态，将其求反后输出。但如果上次是输出“1”使LED点亮，这时候虽然端口上输出逻辑是“1”，但是由于LED的二极管作用将输出高电平拉至“0”电平（0.7V左右），通过引脚读进来就是“0”而非“1”了。这样，将“0”求反后输出还是“1”，就起不到使灯闪烁的目的了。但是，如果这时读的不是端口而是锁存器的输出端Q，则实现闪烁的功能就正常。上述例子很好地说明了为什么单片机在设置读端口功能后还要设置读锁存器这一功能。</p>
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/05/13/mcu_soc/soc-mcu-mpu-cpu-sip/">如何理解soc/mcu/mpu/cpu/sip/模组</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-13</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-08-04</span></span></div></header><div class="post-body"><div class="post-excerpt">
+
+        <h3 id="输入-输出状态问题"   >
+          <a href="#输入-输出状态问题" class="heading-link"><i class="fas fa-link"></i></a><a href="#输入-输出状态问题" class="headerlink" title="输入/输出状态问题"></a>输入/输出状态问题</h3>
+      <p>当引脚配置为输入状态时，输出电路一般是断开的，只能作读取I/O操作</p>
+<p>当引脚配置为输出状态时，程序可通过输入寄存器获取当前I/O状态</p>
+<p>当引脚配置为复用模式时，一般允许程序直接读取输入寄存器获取当前I/O状态，但不能对输出寄存器进行操作以避免干扰外设控制引脚</p>
+
+        <h3 id="GPIO寄存器"   >
+          <a href="#GPIO寄存器" class="heading-link"><i class="fas fa-link"></i></a><a href="#GPIO寄存器" class="headerlink" title="GPIO寄存器"></a>GPIO寄存器</h3>
+      <ul>
+<li>输入数据寄存器</li>
+<li>输出数据寄存器</li>
+<li>I/O模式设置寄存器</li>
+<li>复用功能设置寄存器</li>
+</ul>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/05/13/mcu_soc/soc-mcu-mpu-cpu-sip/">如何理解soc/mcu/mpu/cpu/sip/模组</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-13</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-08-06</span></span></div></header><div class="post-body"><div class="post-excerpt">
         <h2 id="CPU-central-processing-unit"   >
           <a href="#CPU-central-processing-unit" class="heading-link"><i class="fas fa-link"></i></a><a href="#CPU-central-processing-unit" class="headerlink" title="CPU (central processing unit)"></a>CPU (central processing unit)</h2>
       <p>&#8195;&#8195;中央处理器，对于CPU这个名词可以代指很多概念，如硬件线程、内核、多核处理器单元、电路板上的处理器器件等。需要根据具体问题来阐述CPU这个概念的理解。</p>
@@ -336,7 +352,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
         <h2 id="总结"   >
           <a href="#总结" class="heading-link"><i class="fas fa-link"></i></a><a href="#总结" class="headerlink" title="总结"></a>总结</h2>
       <p>&#8195;&#8195;以上几种可以属于计算机系统的范围，其主要是根据集成的复杂度、计算处理能力等因素对其的划分。计算机系统集成不仅限于硅片衬底、也可以是板级的，我们不必太多注重怎么定义，因为其都是一种系统集成复杂度的描述。</p>
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/05/11/fpga-introduction/">fpga_introduction</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-11</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-05-13</span></span></div></header><div class="post-body"><div class="post-excerpt"><p>#FPGA介绍</p>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/05/11/fpga-introduction/">fpga_introduction</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-11</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-08-06</span></span></div></header><div class="post-body"><div class="post-excerpt"><p>#FPGA介绍</p>
 
         <h2 id="可编程逻辑器件是什么"   >
           <a href="#可编程逻辑器件是什么" class="heading-link"><i class="fas fa-link"></i></a><a href="#可编程逻辑器件是什么" class="headerlink" title="可编程逻辑器件是什么"></a>可编程逻辑器件是什么</h2>
@@ -439,11 +455,11 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
         <h3 id="Soc-FPGA"   >
           <a href="#Soc-FPGA" class="heading-link"><i class="fas fa-link"></i></a><a href="#Soc-FPGA" class="headerlink" title="Soc FPGA"></a>Soc FPGA</h3>
       <p>&#8195;&#8195;SoC FPGA为一个整合FPGA架构逻辑资源、硬式核心CPU子系统以及其他硬式核心IP的半导体元件，可实现低延时频宽互联，并提高IP重用性；为系统设计人员提供更多的选择。</p>
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/05/10/mcu_soc/mcu-interrupt/">mcu_interrupt</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-10</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-05-23</span></span></div></header><div class="post-body"><div class="post-excerpt">
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/05/10/mcu_soc/mcu-interrupt/">mcu_interrupt</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-10</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-09-14</span></span></div></header><div class="post-body"><div class="post-excerpt">
         <h1 id="MCU架构——中断"   >
           <a href="#MCU架构——中断" class="heading-link"><i class="fas fa-link"></i></a><a href="#MCU架构——中断" class="headerlink" title="MCU架构——中断"></a>MCU架构——中断</h1>
       <p>&#8195;&#8195;何为中断，就是指处理器接收到来自硬件或者软件的信号，提示发生了某个事件，应该被注意并作出处理。</p>
-<p>&#8195;&#8195;通常，在接收到来自外围硬件（相对于中央处理器和内存）的异步信号，或来自软件的同步信号之后，处理器将会进行相应的硬件／软件处理。发出这样的信号称为进行中断请求（interrupt request，IRQ）。硬件中断导致处理器通过一个运行信息切换（context switch）来保存执行状态（以程序计数器和程序状态字等寄存器信息为主）；软件中断则通常作为CPU指令集中的一个指令，以可编程的方式直接指示这种运行信息切换，并将处理导向一段中断处理代码。中断在计算机多任务处理，尤其是即时系统中尤为有用。这样的系统，包括运行于其上的操作系统，也被称为“中断驱动的”（interrupt-driven）。</p>
+<p>&#8195;&#8195;通常，在接收到来自外围硬件（相对于中央处理器和内存）的异步信号，或来自软件的同步信号之后，处理器将会进行相应的硬件／软件处理。发出这样的信号称为进行中断请求（interrupt request，IRQ）。硬件中断导致处理器通过上下文切换切换（context switch）来保存执行状态（以程序计数器和程序状态字等寄存器信息为主）；软件中断则通常作为CPU指令集中的一个指令，以可编程的方式直接指示这种运行信息切换，并将处理导向一段中断处理代码。中断在计算机多任务处理，尤其是即时系统中尤为有用。这样的系统，包括运行于其上的操作系统，也被称为“中断驱动的”（interrupt-driven）。</p>
 <p>&#8195;&#8195;能够发出中断请求信号的来源统称为<strong>中断源</strong>，CPU跳转执行中断事件处理的逻辑代码程序称为<strong>中断服务程序</strong>。</p>
 <p>&#8195;&#8195;中断系统不单单是响应外部IO的中断，还响应内部的中断请求如定时器、看门狗等。</p>
 
@@ -497,4 +513,29 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
 <li>正在进行的中断过程不能被新的同级或低优先级的中断请求所中断；</li>
 <li>正在进行的低优先级中断过程，能被高优先级中断请求所中断</li>
 </ul>
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/04/29/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/">通信协议基础知识</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-04-29</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-05-19</span></span></div></header><div class="post-body"><div class="post-excerpt">介绍硬件通信协议基础概念知识</div><div class="post-readmore"><a class="post-readmore__link" href="/2021/04/29/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/"><span class="post-readmore__text">阅读全文</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/04/27/open-source-license/">开源许可证 &amp; 知识共享许可协议</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-04-27</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-05-09</span></span></div></header><div class="post-body"><div class="post-excerpt">介绍开源许可证的作用，以及根据开源许可证使用开源项目</div><div class="post-readmore"><a class="post-readmore__link" href="/2021/04/27/open-source-license/"><span class="post-readmore__text">阅读全文</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article></section><nav class="paginator"><div class="paginator-inner"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-right"></i></a></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/images/author_image.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/LiangJinlongFX" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://twitter.com/Jinlong15071708" target="_blank" rel="noopener" data-popover="Twitter" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-twitter"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">12</div><div class="sidebar-ov-state-item__name">归档</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jinlong</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
+
+        <h2 id="Cortex-M-NVIC介绍"   >
+          <a href="#Cortex-M-NVIC介绍" class="heading-link"><i class="fas fa-link"></i></a><a href="#Cortex-M-NVIC介绍" class="headerlink" title="Cortex-M NVIC介绍"></a>Cortex-M NVIC介绍</h2>
+      <p>向量中断控制器 NVIC，是与Cortex-M内核紧密耦合的中断控制系统，在 Coretx-M架构中，中断是属于异常中的一种。NVIC支持多达240个中断信号输入，芯片制造商根据具体芯片设计将不同的外设中断信号（IRQ）连接到特定的中断输入, 另外还提供了不可屏蔽中断信号（NMI）输入，此信号映射也由芯片制造商决定。</p>
+<p>NVIC中断控制器提供的中断控制功能：</p>
+<ul>
+<li>特定中断信号的使能与禁能</li>
+<li>中断向量表偏移量设置</li>
+<li>中断悬起以及解悬控制</li>
+<li>中断状态指示</li>
+<li>中断屏蔽，用于屏蔽优先级大于某数值的中断</li>
+<li>全局中断控制</li>
+<li>优先级组与优先级</li>
+</ul>
+<blockquote>
+<p>注意NVIC的IRQ不等同于芯片外设的IRQ，需要区别且分别设置</p>
+</blockquote>
+
+        <h3 id="NVIC-中断优先级"   >
+          <a href="#NVIC-中断优先级" class="heading-link"><i class="fas fa-link"></i></a><a href="#NVIC-中断优先级" class="headerlink" title="NVIC 中断优先级"></a>NVIC 中断优先级</h3>
+      <p>NVIC中断主要分为IRQ以及NMI两种，其中NMI总是为负数，其优先级是不能修改的，</p>
+<p>支持高达256个优先级，但实际中将256个优先级按位段分为抢占优先级和亚优先级，两个位段划分是十分灵活的，抢占优先级越多，则所属的亚优先级越少。</p>
+<p>实际上芯片制造商会精简设计，如8位的优先级位段实际只采用高3位位域以划分8个优先级，视具体芯片而定以决定允许修改的优先级，如</p>
+<p><img src="mcu-interrupt/%E4%BC%98%E5%85%88%E7%BA%A7%E5%88%92%E5%88%86.png" alt="image-20210914223923898"></p>
+<p><img src="mcu-interrupt/%E4%BC%98%E5%85%88%E7%BA%A7%E5%88%86%E7%BB%84%E5%AF%B9%E5%BA%94%E6%83%85%E5%86%B5.png" alt="image-20210914224140867"></p>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/04/29/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/">通信协议基础知识</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-04-29</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-05-19</span></span></div></header><div class="post-body"><div class="post-excerpt">介绍硬件通信协议基础概念知识</div><div class="post-readmore"><a class="post-readmore__link" href="/2021/04/29/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/"><span class="post-readmore__text">阅读全文</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/04/27/open-source-license/">开源许可证 &amp; 知识共享许可协议</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-04-27</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-05-09</span></span></div></header><div class="post-body"><div class="post-excerpt">介绍开源许可证的作用，以及根据开源许可证使用开源项目</div><div class="post-readmore"><a class="post-readmore__link" href="/2021/04/27/open-source-license/"><span class="post-readmore__text">阅读全文</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article></section><nav class="paginator"><div class="paginator-inner"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-right"></i></a></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/images/author_image.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/LiangJinlongFX" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://twitter.com/Jinlong15071708" target="_blank" rel="noopener" data-popover="Twitter" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-twitter"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">12</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">1</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">2</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jinlong</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
