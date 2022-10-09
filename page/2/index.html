@@ -28,7 +28,210 @@ var CONFIG = {
   sourcePath: {"js":"js","css":"css","images":"images"},
 };
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Jinlong's Blog</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/04/26/hello-hexo/">hello hexo</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-04-26</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-08-06</span></span></div></header><div class="post-body"><div class="post-excerpt"><p>本个人博客是基于 Github Pages 和 Hexo 进行搭建，如需了解更多，请参阅 [<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://hexo.io/zh-tw/" >Hexo官网</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>] 。主题使用 <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://theme-stun.github.io/" >stun</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Jinlong's Blog</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/05/11/fpga-introduction/">fpga_introduction</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-11</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-08-06</span></span></div></header><div class="post-body"><div class="post-excerpt"><p>#FPGA介绍</p>
+
+        <h2 id="可编程逻辑器件是什么"   >
+          <a href="#可编程逻辑器件是什么" class="heading-link"><i class="fas fa-link"></i></a><a href="#可编程逻辑器件是什么" class="headerlink" title="可编程逻辑器件是什么"></a>可编程逻辑器件是什么</h2>
+      <p>&#8195;&#8195;在集成数字电路芯片中，除了电路逻辑固化的芯片, 还有一种可编程逻辑器件(PLD), 允许出厂后对其数字逻辑进行变更。早期的 PLD 发展出了 PAL （可编程阵列逻辑），但 PAL 只能写入一次逻辑配置，后来出现可重复烧录的 GAL (通用数组逻辑)。如今可编程器件发展主要分为 CPLD 和 FPGA 两种类别。一颗CPLD内等于包含了数颗的PAL，各PAL（逻辑区块）间的互接连线也可以进行程序性的规划、刻录，CPLD运用这种多合一（All-In-One）的集成作法，使其一颗就能实现数千个逻辑门，甚至数十万个逻辑门才能构成的电路。各厂商CPLD芯片多具有焊接后再行传输、再次刻录的技术，但各家的技术实现方式与名称多不尽相同。FPGA运用一种逻辑门式的网格（Grid），这种网格与普通的“闸数组”相类似，网格可以在FPGA芯片出厂后才进行配置配置的程序性规划。FPGA通常也可以在焊接后再进行程序刻录、变更的工作，此在某种程度与大型的CPLD相似。而绝大多数的FPGA，其内部的程序配置配置是属于易失性的，即是无持续电力供应后逻辑配置的内容就会消失，所以在设备重新获得电力后，就必须将配置配置内容重新加载（re-load）到FPGA中，或者期望改变FPGA内的逻辑配置时，也必须进行重新加载的动作。</p>
+
+        <h3 id="CPLD-与-FPGA-的区别"   >
+          <a href="#CPLD-与-FPGA-的区别" class="heading-link"><i class="fas fa-link"></i></a><a href="#CPLD-与-FPGA-的区别" class="headerlink" title="CPLD 与 FPGA 的区别"></a>CPLD 与 FPGA 的区别</h3>
+      <ul>
+<li>CPLD更适合完成各种算法和组合逻辑，FPGA更适合于完成时序逻辑。换句话说，FPGA更适合于触发器丰富的结构，而CPLD更适合于触发器有限而乘积项丰富的结构。</li>
+<li>CPLD的连续式布线结构决定了它的时序延迟是均匀的和可预测的，而FPGA的分段式布线结构决定了其延迟的不可预测性</li>
+<li>在编程上FPGA比CPLD具有更大的灵活性。CPLD通过修改具有固定内连电路的逻辑功能来编程，FPGA主要通过改变内部连线的布线来编程；FPGA可在逻辑门下编程，而CPLD是在逻辑块下编程，粗粒与细粒。</li>
+<li>FPGA的集成度比CPLD高，具有更复杂的布线结构和逻辑实现</li>
+<li>CPLD比FPGA使用起来更方便。CPLD的编程采用E2PROM或FASTFLASH技术，无需外部存储器芯片，使用简单。而FPGA的编程信息需存放在外部存储器上，使用方法复杂</li>
+<li>CPLD的速度比FPGA快，并且具有较大的时间可预测性。这是由于FPGA是门级编程，并且CLB之间采用分布式互联，而CPLD是逻辑块级编程，并且其逻辑块之间的互联是集总式的。</li>
+<li>在编程方式上，CPLD主要是基于E2PROM或FLASH存储器编程，编程次数可达1万次，优点是系统断电时编程信息也不丢失。CPLD又可分为在编程器上编程和在系统编程两类。FPGA大部分是基于SRAM编程，编程信息在系统断电时丢失，每次上电时，需从器件外部将编程数据重新写入SRAM中。其优点是可以编程任意次，可在工作中快速编程，从而实现板级和系统级的动态配置。</li>
+<li>CPLD保密性好，FPGA保密性差</li>
+<li>一般情况下，CPLD的功耗要比FPGA大，且集成度越高越明显</li>
+</ul>
+
+        <h3 id="专用集成电路"   >
+          <a href="#专用集成电路" class="heading-link"><i class="fas fa-link"></i></a><a href="#专用集成电路" class="headerlink" title="专用集成电路"></a>专用集成电路</h3>
+      <p>&#8195;&#8195;特殊应用集成电路是由特定使用者要求和特定电子系统的需要而设计、制造。由于单个专用集成电路芯片的生产成本很高，如果出货量较小，则采用专用集成电路在经济上不太实惠。这种情况可以使用可编程逻辑器件（如现场可编程逻辑门阵列）来作为目标硬件实现集成电路设计。此外，可编程逻辑器件具有用户可编程特性，因此适合于大规模芯片量产之前的原型机，来进行调试等工作。但是可编程逻辑器件在面积、速度方面的优化程度不如全定制的集成电路。</p>
+
+        <h2 id="FPGA-的特性"   >
+          <a href="#FPGA-的特性" class="heading-link"><i class="fas fa-link"></i></a><a href="#FPGA-的特性" class="headerlink" title="FPGA 的特性"></a>FPGA 的特性</h2>
+      <p>&#8195;&#8195;现场可编程门阵列 (field programmable gate array) ，简称 FPGA。FPGA一般来说比专用集成电路（ASIC）的速度要慢，无法完成更复杂的设计，并且会消耗更多的电能。但是，FPGA具有很多优点，比如可以快速成品，而且其内部逻辑可以被设计者反复修改，从而改正程序中的错误，此外，使用FPGA进行调试的成本较低。厂商也可能会提供便宜、但是编辑能力有限的FPGA产品。因为这些芯片有的可编辑能力较差，所以这些设计的开发是在普通的FPGA上完成的，然后将设计转移到一个类似于专用集成电路的芯片上。在一些技术更新比较快的行业，FPGA几乎是电子系统中的必要部件，因为在大批量供货前，必须迅速抢占市场，这时FPGA方便灵活的优势就显得很重要。</p>
+
+        <h2 id="FPGA-的组成部分"   >
+          <a href="#FPGA-的组成部分" class="heading-link"><i class="fas fa-link"></i></a><a href="#FPGA-的组成部分" class="headerlink" title="FPGA 的组成部分"></a>FPGA 的组成部分</h2>
+      <ul>
+<li><p>可编程逻辑块 (Configurable Logic Block, CLB)</p>
+<p>  CLB是FPGA内部实现可编程逻辑的主要成分, 具体可参考[UltraScale Architecture  Configurable Logic Block](<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.xilinx.com/support/documentation/user_guides/ug574-ultrascale-clb.pdf" >UltraScale Architecture Configurable Logic Block User Guide (UG574) (xilinx.com)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>)。</p>
+</li>
+<li><p>Block Memory</p>
+</li>
+<li><p>物理 I/O</p>
+</li>
+<li><p>附件组件</p>
+</li>
+</ul>
+
+        <h2 id="FPGA-与-CPU-DSP-GPU-比较"   >
+          <a href="#FPGA-与-CPU-DSP-GPU-比较" class="heading-link"><i class="fas fa-link"></i></a><a href="#FPGA-与-CPU-DSP-GPU-比较" class="headerlink" title="FPGA 与 CPU/DSP/GPU 比较"></a>FPGA 与 CPU/DSP/GPU 比较</h2>
+      <p>&#8195;&#8195;在硬件层面，DSP/CPU/GPU都是是ASIC，适宜于量产降低成本，缺点是（硬件）设计一旦确定，便不易于修改。处理架构固定。</p>
+<p>&#8195;&#8195;与CPU等架构相比，构成FPGA架构的结构可在应用程序执行中实现高度并行性，也可以设计成特定的 CPU 架构验证平台。处理器（CPU）和FPGA之间的关键区别之一就是处理架构是否固定。CPU架构中应用程序执行只能适应流水线结构的处理流程，而在 FPGA 中，其相当于一个白板，可以根据实际需要设计成最适应的处理架构。但一般 FPGA 模拟对应的 CPU 等架构当然没有反复验证设计的专用 CPU ASIC 性能那么好。</p>
+
+        <h2 id="EDA-的-FPGA-设计流程"   >
+          <a href="#EDA-的-FPGA-设计流程" class="heading-link"><i class="fas fa-link"></i></a><a href="#EDA-的-FPGA-设计流程" class="headerlink" title="EDA 的 FPGA 设计流程"></a>EDA 的 FPGA 设计流程</h2>
+      
+        <h3 id="1-设计输入"   >
+          <a href="#1-设计输入" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-设计输入" class="headerlink" title="1.设计输入"></a>1.设计输入</h3>
+      <p>​    分为原理图输入、HDL 文本输入以及波形输入等方式。</p>
+
+        <h3 id="2-综合"   >
+          <a href="#2-综合" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-综合" class="headerlink" title="2.综合"></a>2.综合</h3>
+      <p>&#8195;&#8195;综合，就是针对给定的电路实现功能和实现此电路的约束条件，如速度、功耗、成本及电路类型等，通过计算机进行优化处理，获得一个能满足上述要求的电路设计方案。也就是是说，被综合的文件是HDL文件（或相应文件等），综合的依据是逻辑设计的描述和各种约束条件，综合的结果则是一个硬件电路的实现方案，该方案必须同时满足预期的功能和约束条件。对于综合来说，满足要求的方案可能有多个，综合器将产生一个最优的或接近最优的结果。因此，综合的过程也就是设计目标的优化过程，最后获得的结构与综合器的工作性能有关。</p>
+<p>&#8195;&#8195;综合生成输出文件称为网表，网表中除了包含从HDL语言中infer（推断）出的与门、非门等组合逻辑和寄存器等时序逻辑之外，还包含FPGA特有的各种原语(Primitive)比如LUT，BRAM，DSP48（Xilinx），甚至PowerPC（Xilinx），PCIe等硬核模块，以及这些模块的属性和约束信息。网表的业界标准是EDIF格式。文件后缀通常为.edn, .edf, .edif。</p>
+
+        <h3 id="3-适配"   >
+          <a href="#3-适配" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-适配" class="headerlink" title="3.适配"></a>3.适配</h3>
+      <p>&#8195;&#8195;适配的适配对象直接与器件的结构相对应。逻辑综合通过后必须利用适配器将综合后网表文件针对某一具体的目标器件进行逻辑映射操作，其中包括底层器件配置、逻辑分割、逻辑优化、逻辑布局布线操作。适配完成后可以利用适配所产生的仿真文件作精确的时序仿真，同时产生可应用于编程的文件。</p>
+
+        <h3 id="4-时序仿真与功能仿真"   >
+          <a href="#4-时序仿真与功能仿真" class="heading-link"><i class="fas fa-link"></i></a><a href="#4-时序仿真与功能仿真" class="headerlink" title="4.时序仿真与功能仿真"></a>4.时序仿真与功能仿真</h3>
+      <p>&#8195;&#8195;通常情况下，先进行功能仿真，因此功能仿真又称为前仿真，它直接对原理图描述或其他描述形式的逻辑功能进行测试模拟，验证其实现的功能是否满足原设计的要求，仿真的过程不涉及任何具体形式的硬件特性，不经历综合和适配。在功能仿真已经完成，确认设计文件表达的功能满足要求后，再进行综合适配和时序仿真。时序仿真是在选择了具体器件并且完成布局布线之后进行的时序关系仿真，因此又称为时延仿真或后仿真。</p>
+
+        <h3 id="5-编程下载"   >
+          <a href="#5-编程下载" class="heading-link"><i class="fas fa-link"></i></a><a href="#5-编程下载" class="headerlink" title="5.编程下载"></a>5.编程下载</h3>
+      <p>&#8195;&#8195;将设计处理中产生的编程数据下载到具体的可编程器件中。如果之前的步骤都满足设计的要求，就可以将适配器产生的配置或下载文件通过CPLD/FPGA编程器或下载电缆载入目标芯片CPLD或FPGA中。</p>
+
+        <h3 id="6-硬件测试"   >
+          <a href="#6-硬件测试" class="heading-link"><i class="fas fa-link"></i></a><a href="#6-硬件测试" class="headerlink" title="6.硬件测试"></a>6.硬件测试</h3>
+      <p>&#8195;&#8195;将含有载入了设计的FPGA或CPLD的硬件系统进行统一测试，便于在真实的环境中检验设计效果。</p>
+
+        <h2 id="FPGA-设计一些术语"   >
+          <a href="#FPGA-设计一些术语" class="heading-link"><i class="fas fa-link"></i></a><a href="#FPGA-设计一些术语" class="headerlink" title="FPGA 设计一些术语"></a>FPGA 设计一些术语</h2>
+      
+        <h3 id="BlackBox"   >
+          <a href="#BlackBox" class="heading-link"><i class="fas fa-link"></i></a><a href="#BlackBox" class="headerlink" title="BlackBox"></a>BlackBox</h3>
+      <p>&#8195;&#8195;一个大的设计中可以用到一系列网表文件作为输入的一部分而并不全部使用HDL文件。当综合这个大设计时综合器不需要知道这个网表文件是怎样实现的，而只需要知道它的输入输出接口就可以了。这样的网表就称为黑盒子，因为我们不需要看到它的内部情况。通常付费IP都会以BlackBox的形式。</p>
+<p>&#8195;&#8195;每个BlackBox网表都需要有一个与之相对应的HDL文件来注明它的端口。这个HDL只说明BlackBox的端口信息，而不提供具体实现信息。这个只提供端口信息的HDL文件称为Wrapper。Wrapper的名字通常需要与BlackBox网表的名字相同</p>
+
+        <h3 id="IP-核"   >
+          <a href="#IP-核" class="heading-link"><i class="fas fa-link"></i></a><a href="#IP-核" class="headerlink" title="IP 核"></a>IP 核</h3>
+      <p>&#8195;&#8195;IP (Intellligent Property) 核是具有知识产权的集成电路芯核总称。是经过反复验证具有特定功能的逻辑宏模块，与芯片制造工艺无关，可以移植到不同的半导体工艺中。IP 核设计已经成为 ASIC 电路设计公司和 FPGA 供应商的重要任务，也是其实力的体现。目前，IP 核已经成为系统设计的基本单元，并作为独立设计成果被交换、转让以及销售。</p>
+<p>&#8195;&#8195;从 IP 核的提供方式上，通常分为软核、硬核以及固核三类。</p>
+
+        <h4 id="软核-Soft-IP-Core"   >
+          <a href="#软核-Soft-IP-Core" class="heading-link"><i class="fas fa-link"></i></a><a href="#软核-Soft-IP-Core" class="headerlink" title="软核 (Soft IP Core)"></a>软核 (Soft IP Core)</h4>
+      <p>&#8195;&#8195;软核指的是综合之前的寄存器传输级模型 (RTL)。具体在 FPGA 设计中指的是对逻辑电路的硬件语言描述，包括逻辑描述、网表和帮助文档等。其优点在于灵活性高、可移植性强，允许用户自配置。缺点是在后续设计中存在发生错误的风险。软核是应用最广泛的方式。</p>
+
+        <h4 id="固核-Firm-IP-Core"   >
+          <a href="#固核-Firm-IP-Core" class="heading-link"><i class="fas fa-link"></i></a><a href="#固核-Firm-IP-Core" class="headerlink" title="固核 (Firm IP Core)"></a>固核 (Firm IP Core)</h4>
+      <p>&#8195;&#8195;固核指的是带有平面规划信息的网表。在 FPGA 设计中可以看成带有布局规划的软核，通常以 RTL 代码以及对应具体工艺网表的混合形式提供。和软核相比其灵活性稍差但可靠性有较大提高。</p>
+
+        <h4 id="硬核-Hard-IP-Core"   >
+          <a href="#硬核-Hard-IP-Core" class="heading-link"><i class="fas fa-link"></i></a><a href="#硬核-Hard-IP-Core" class="headerlink" title="硬核 (Hard IP Core)"></a>硬核 (Hard IP Core)</h4>
+      <p>&#8195;&#8195;硬核指的是经过验证的设计版图。具体在 FPGA 设计中指的是布局和工艺固定、经过前后端验证的设计，开发人员不能对其修改。因此适用范围较窄。</p>
+
+        <h3 id="Soc-FPGA"   >
+          <a href="#Soc-FPGA" class="heading-link"><i class="fas fa-link"></i></a><a href="#Soc-FPGA" class="headerlink" title="Soc FPGA"></a>Soc FPGA</h3>
+      <p>&#8195;&#8195;SoC FPGA为一个整合FPGA架构逻辑资源、硬式核心CPU子系统以及其他硬式核心IP的半导体元件，可实现低延时频宽互联，并提高IP重用性；为系统设计人员提供更多的选择。</p>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/05/10/mcu_soc/mcu-interrupt/">mcu_interrupt</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-10</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2022-10-09</span></span></div></header><div class="post-body"><div class="post-excerpt">
+        <h1 id="MCU架构——中断"   >
+          <a href="#MCU架构——中断" class="heading-link"><i class="fas fa-link"></i></a><a href="#MCU架构——中断" class="headerlink" title="MCU架构——中断"></a>MCU架构——中断</h1>
+      <p>&#8195;&#8195;何为中断，就是指处理器接收到来自硬件或者软件的信号，提示发生了某个事件，应该被注意并作出处理。</p>
+<p>&#8195;&#8195;通常，在接收到来自外围硬件（相对于中央处理器和内存）的异步信号，或来自软件的同步信号之后，处理器将会进行相应的硬件／软件处理。发出这样的信号称为进行中断请求（interrupt request，IRQ）。硬件中断导致处理器通过上下文切换切换（context switch）来保存执行状态（以程序计数器和程序状态字等寄存器信息为主）；软件中断则通常作为CPU指令集中的一个指令，以可编程的方式直接指示这种运行信息切换，并将处理导向一段中断处理代码。中断在计算机多任务处理，尤其是即时系统中尤为有用。这样的系统，包括运行于其上的操作系统，也被称为“中断驱动的”（interrupt-driven）。</p>
+<p>&#8195;&#8195;能够发出中断请求信号的来源统称为<strong>中断源</strong>，CPU跳转执行中断事件处理的逻辑代码程序称为<strong>中断服务程序</strong>。</p>
+<p>&#8195;&#8195;中断系统不单单是响应外部IO的中断，还响应内部的中断请求如定时器、看门狗等。</p>
+
+        <h2 id="中断触发类型"   >
+          <a href="#中断触发类型" class="heading-link"><i class="fas fa-link"></i></a><a href="#中断触发类型" class="headerlink" title="中断触发类型"></a>中断触发类型</h2>
+      <ul>
+<li><p>电平状态触发</p>
+<p>  以等待特定的电平以触发中断。当请求中断时，驱动中断请求线路至特定电平，中断将在在CPU发出强制停止命令或更高优先级中断事件之前始终保持。电平状态触发允许多个设备共享一个中断线路，如低电平触发，在中断线路添加上拉电阻以保证中断请求撤销后及时复位。其缺点是当没有撤销中断电平，则系统一直响应中断则影响其正常运行。</p>
+</li>
+<li><p>边沿触发</p>
+<p>  设备通过向中断线路发送一个脉冲来表示其中断请求。脉冲可以为上升沿或下降沿或者双边沿。在发送完脉冲后设备立即释放中断线路。如果这个脉冲太短，以至于I/O轮询不足以确保知悉其存在，则有必要使用专门的硬件设备来辅助对边沿触发的探查。边沿触发中断容易丢失，特别是当中断被有意屏蔽时。在不引入锁存器的情况下，在屏蔽时段发送的中断信号不可能被恢复。在早期的计算机系统中因为中断丢失而导致处理不能继续的情况时有发生。现代中断硬件多包含有一个或一组中断状态锁存器，用以暂存一逝而过的中断请求。在对边沿触发中断硬件进行编程时，应检查这些中断状态寄存器以确保请求事件不会丢失。</p>
+</li>
+<li><p>混合模式</p>
+<p>  使用状态触发与边沿触发兼顾的混合中断模式。其硬件不但探测脉冲，也验证中断信号是否保持一段时间。</p>
+</li>
+<li><p>消息信号</p>
+<p>  中断消息的识别基于特定的比特码序列而不是物理线路上的单个信号，可以有效地通过设定不同的中断比特码来划分和处理不同类型的中断。另外，使用串行或并行总线都可以传递中断消息。</p>
+</li>
+</ul>
+
+        <h2 id="中断类型"   >
+          <a href="#中断类型" class="heading-link"><i class="fas fa-link"></i></a><a href="#中断类型" class="headerlink" title="中断类型"></a>中断类型</h2>
+      <ul>
+<li><p>可屏蔽中断 (maskable interrupt)</p>
+<p>  硬件中断的一类，可通过在中断屏蔽寄存器中设定位掩码来关闭</p>
+</li>
+<li><p>不可屏蔽中断 (NMI)</p>
+<p>  硬件中断的一类，无法通过在中断屏蔽寄存器中设定位掩码来关闭</p>
+</li>
+<li><p>处理器中断</p>
+<p>  一种特殊的硬件中断。由处理器发出，被其它处理器接收。仅见于多处理器系统，以便于处理器间通信或同步</p>
+</li>
+<li><p>软件中断</p>
+<p>  一条CPU指令，用以自陷一个中断。由于软中断指令通常要运行一个切换CPU至内核态（Kernel Mode/Ring 0）的子例程，它常被用作实现系统调用（System call）</p>
+</li>
+</ul>
+
+        <h2 id="中断处理"   >
+          <a href="#中断处理" class="heading-link"><i class="fas fa-link"></i></a><a href="#中断处理" class="headerlink" title="中断处理"></a>中断处理</h2>
+      <p>&#8195;&#8195;系统响应中断必须通过硬件自动方式或者软件方式保存进入中断前的状态，如保存内核寄存器状态保存。MCU 系统响应中断一般自动保存上下文信息并跳转到该中断对应的地址上运行代码。所有中断跳转地址空间一般是线性分布的，称之为<strong>中断向量表</strong> ，中断向量表每个中断只有极小的地址空间，不足以存放用户的中断处理程序，一般通过跳转到对应的中断事件函数执行，返回后由硬件自动恢复上下文信息以继续按照原有正常程序执行。注意，在中断处理事件中是否影响程序正常需根据实际情况断定。</p>
+<p>&#8195;&#8195;中断事件处理程序应该精简以尽快返回</p>
+
+        <h2 id="中断优先级"   >
+          <a href="#中断优先级" class="heading-link"><i class="fas fa-link"></i></a><a href="#中断优先级" class="headerlink" title="中断优先级"></a>中断优先级</h2>
+      <p>&#8195;&#8195;中断系统中，CPU一般根据各中断请求的轻重缓急分别处理，即给每个中断源确定一个中断优先级别，系统自动对它们进行排队判优，保证首先处理优先级别高的中断请求，待级别高的中断请求处理完毕后，再响应级别较低的中断请求。对多个中断源进行识别和优先级排队的日的就是要确定出最高级别的中断源，并形成该中断源的中断服务程序入口地址，以便CPU将控制转移到该中断服务程序去。一般数字越小，优先级越高。</p>
+<p>&#8195;&#8195;当系统在处理中断的同时，有更高优先级的中断触发，系统则保存当前中断上下位而转向处理更高优先级中断然后回来继续处理低优先级中断。这种逻辑叫<strong>中断嵌套</strong>。有些 MCU 不支持中断嵌套或者不允许中断当前中断处理，则可以通过禁用全局中断方式处理。</p>
+<p>&#8195;&#8195;中断响应原则：</p>
+<ul>
+<li>优先响应高优先级中断</li>
+<li>优先级相同，则根据次序响应</li>
+<li>正在进行的中断过程不能被新的同级或低优先级的中断请求所中断；</li>
+<li>正在进行的低优先级中断过程，能被高优先级中断请求所中断</li>
+</ul>
+
+        <h2 id="Cortex-M-NVIC介绍"   >
+          <a href="#Cortex-M-NVIC介绍" class="heading-link"><i class="fas fa-link"></i></a><a href="#Cortex-M-NVIC介绍" class="headerlink" title="Cortex-M NVIC介绍"></a>Cortex-M NVIC介绍</h2>
+      <p>向量中断控制器 NVIC，是与Cortex-M内核紧密耦合的中断控制系统，在 Coretx-M架构中，中断是属于异常中的一种。NVIC支持多达240个中断信号输入，芯片制造商根据具体芯片设计将不同的外设中断信号（IRQ）连接到特定的中断输入, 另外还提供了不可屏蔽中断信号（NMI）输入，此信号映射也由芯片制造商决定。</p>
+<p>NVIC中断控制器提供的中断控制功能：</p>
+<ul>
+<li>特定中断信号的使能与禁能</li>
+<li>中断向量表偏移量设置</li>
+<li>中断悬起以及解悬控制</li>
+<li>中断状态指示</li>
+<li>中断屏蔽，用于屏蔽优先级大于某数值的中断</li>
+<li>全局中断控制</li>
+<li>优先级组与优先级</li>
+</ul>
+<blockquote>
+<p>注意NVIC的IRQ不等同于芯片外设的IRQ，需要区别且分别设置</p>
+</blockquote>
+
+        <h3 id="NVIC-中断优先级"   >
+          <a href="#NVIC-中断优先级" class="heading-link"><i class="fas fa-link"></i></a><a href="#NVIC-中断优先级" class="headerlink" title="NVIC 中断优先级"></a>NVIC 中断优先级</h3>
+      <p>NVIC中断主要分为IRQ以及NMI两种，其中NMI总是为负数，其优先级是不能修改的，</p>
+<p>支持高达256个优先级，但实际中将256个优先级按位段分为抢占优先级和亚优先级，两个位段划分是十分灵活的，抢占优先级越多，则所属的亚优先级越少。</p>
+<p>实际上芯片制造商会精简设计，如8位的优先级位段实际只采用高3位位域以划分8个优先级，视具体芯片而定以决定允许修改的优先级，如</p>
+<p><img src="https://raw.githubusercontent.com/LiangJinlongFX/gallery/main/%E4%BC%98%E5%85%88%E7%BA%A7%E5%88%92%E5%88%86.png" alt="优先级划分"></p>
+<p><img src="https://raw.githubusercontent.com/LiangJinlongFX/gallery/main/%E4%BC%98%E5%85%88%E7%BA%A7%E5%88%86%E7%BB%84%E5%AF%B9%E5%BA%94%E6%83%85%E5%86%B5.png" alt="优先级分组对应情况"></p>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/04/29/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/">通信协议基础知识</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-04-29</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-11-30</span></span></div></header><div class="post-body"><div class="post-excerpt">介绍硬件通信协议基础概念知识</div><div class="post-readmore"><a class="post-readmore__link" href="/2021/04/29/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/"><span class="post-readmore__text">阅读全文</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/04/27/open-source-license/">开源许可证 &amp; 知识共享许可协议</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-04-27</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2022-10-09</span></span></div></header><div class="post-body"><div class="post-excerpt">介绍开源许可证的作用，以及根据开源许可证使用开源项目</div><div class="post-readmore"><a class="post-readmore__link" href="/2021/04/27/open-source-license/"><span class="post-readmore__text">阅读全文</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/04/26/hello-hexo/">hello hexo</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-04-26</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2022-10-09</span></span></div></header><div class="post-body"><div class="post-excerpt"><p>本个人博客是基于 Github Pages 和 Hexo 进行搭建，如需了解更多，请参阅 [<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://hexo.io/zh-tw/" >Hexo官网</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>] 。主题使用 <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://theme-stun.github.io/" >stun</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h2 id="使用-Gtihub-仓库作为图床-PicGo-自动上传"   >
+          <a href="#使用-Gtihub-仓库作为图床-PicGo-自动上传" class="heading-link"><i class="fas fa-link"></i></a><a href="#使用-Gtihub-仓库作为图床-PicGo-自动上传" class="headerlink" title="使用 Gtihub 仓库作为图床 + PicGo 自动上传"></a>使用 Gtihub 仓库作为图床 + PicGo 自动上传</h2>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/268241217" >github图床+picgo使用 - 知乎 (zhihu.com)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>Github 仓库一般限制最大 1GB，建议整个图床不要超过 1GB</p>
+
+        <h3 id="PicGo-上传失败原因"   >
+          <a href="#PicGo-上传失败原因" class="heading-link"><i class="fas fa-link"></i></a><a href="#PicGo-上传失败原因" class="headerlink" title="PicGo 上传失败原因"></a>PicGo 上传失败原因</h3>
+      <ul>
+<li>Token 过期</li>
+<li>设定分支名为 main ，而不是 master，然后重启 PicGo</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/d03a8c322ddb40beb5a4d991d93efe99.png" alt="PicGo"></p>
+
+        <h3 id="结合-typora-联动粘贴即上传图片"   >
+          <a href="#结合-typora-联动粘贴即上传图片" class="heading-link"><i class="fas fa-link"></i></a><a href="#结合-typora-联动粘贴即上传图片" class="headerlink" title="结合 typora 联动粘贴即上传图片"></a>结合 typora 联动粘贴即上传图片</h3>
+      <p><img src="https://pic4.zhimg.com/80/v2-217d9168b6a5c4f2b55f4fdfae38b8b3_720w.webp" alt="img"></p>
 
         <h2 id="常见问题"   >
           <a href="#常见问题" class="heading-link"><i class="fas fa-link"></i></a><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2>
@@ -102,4 +305,4 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
 <li><p>INTERFACE</p>
 </li>
 </ul>
-</div></div></article></section><nav class="paginator"><div class="paginator-inner"><a class="extend prev" rel="prev" href="/"><i class="fas fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/images/author_image.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/LiangJinlongFX" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://twitter.com/Jinlong15071708" target="_blank" rel="noopener" data-popover="Twitter" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-twitter"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">12</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">1</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">2</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jinlong</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
+</div></div></article></section><nav class="paginator"><div class="paginator-inner"><a class="extend prev" rel="prev" href="/"><i class="fas fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/images/author_image.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/LiangJinlongFX" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://twitter.com/Jinlong15071708" target="_blank" rel="noopener" data-popover="Twitter" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-twitter"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">16</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">1</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">2</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2022</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jinlong</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
